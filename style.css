@@ -175,6 +175,7 @@ main {
     display: block;
     font-size: 0.9rem;
     font-weight: 400;
+    text-align: center;
     margin-top: 5px;
     color: var(--secondary-color);
 }
