@@ -337,6 +337,41 @@ main {
     font-size: 1.1rem;
 }
 
+.contact-info {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.contact-method h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.email-address {
+    margin-bottom: 15px;
+}
+
+.email-address a {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.email-address a:hover {
+    opacity: 0.8;
+}
+
+.contact-note {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
 .contact-form {
     background-color: var(--white);
     padding: 40px;
