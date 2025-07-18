@@ -171,6 +171,14 @@ main {
     position: relative;
 }
 
+.section-title .subtitle {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 5px;
+    color: var(--secondary-color);
+}
+
 .section-title::after {
     content: '';
     position: absolute;
@@ -284,6 +292,13 @@ main {
     border: none;
 }
 
+.video-description {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
 /* 出演作品 */
 .works-categories {
     display: grid;
@@ -325,6 +340,96 @@ main {
     font-size: 0.9rem;
 }
 
+.work-note {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* 注意事項 */
+.notes-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
+}
+
+.notes-list {
+    list-style: none;
+}
+
+.notes-list li {
+    position: relative;
+    padding: 15px 0 15px 30px;
+    border-bottom: 1px solid var(--light-gray);
+    line-height: 1.8;
+}
+
+.notes-list li:last-child {
+    border-bottom: none;
+}
+
+.notes-list li:before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+}
+
+/* 宅録環境 */
+.setup-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.equipment-category {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.equipment-category h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.equipment-list {
+    list-style: none;
+}
+
+.equipment-list li {
+    padding: 8px 0;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.setup-note {
+    grid-column: 1 / -1;
+    background-color: var(--background-color);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.setup-note p {
+    color: var(--primary-color);
+    line-height: 2;
+    font-weight: 500;
+}
+
 /* お問い合わせ */
 .contact-content {
     max-width: 800px;
@@ -335,41 +440,6 @@ main {
     text-align: center;
     margin-bottom: 40px;
     font-size: 1.1rem;
-}
-
-.contact-info {
-    background-color: var(--white);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
-    text-align: center;
-}
-
-.contact-method h3 {
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.email-address {
-    margin-bottom: 15px;
-}
-
-.email-address a {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
-}
-
-.email-address a:hover {
-    opacity: 0.8;
-}
-
-.contact-note {
-    font-size: 0.9rem;
-    color: var(--secondary-color);
 }
 
 .contact-form {
@@ -526,6 +596,12 @@ main {
     .samples-grid,
     .video-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* 宅録環境 */
+    .setup-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     /* お問い合わせ */
