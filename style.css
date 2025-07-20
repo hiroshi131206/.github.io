@@ -441,6 +441,11 @@ main {
     font-weight: 500;
 }
 
+.indent {
+    display: inline-block;
+    margin-left: 11em; /* 実際に表示を見ながら調整してください */
+}
+
 /* お問い合わせ */
 .contact-content {
     max-width: 800px;
