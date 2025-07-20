@@ -230,8 +230,18 @@ main {
     background-color: var(--background-color);
     padding: 30px;
     border-radius: 10px;
-    line-height: 2;
-    border-bottom: 3px solid var(--accent-color);
+}
+
+.profile-description p {
+    line-height: 2.5;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid var(--light-gray);
+    position: relative;
+}
+
+.profile-description p:last-child {
+    border-bottom: none;
 }
 
 /* ボイスサンプル */
