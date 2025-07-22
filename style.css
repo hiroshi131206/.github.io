@@ -177,6 +177,7 @@ main {
     font-weight: 400;
     margin-top: 5px;
     color: var(--secondary-color);
+    text-align: center;
 }
 
 .section-title::after {
@@ -227,21 +228,25 @@ main {
 }
 
 .profile-description {
+    position: relative;
     background-color: var(--background-color);
     padding: 30px;
     border-radius: 10px;
+    background-image: 
+        repeating-linear-gradient(
+            transparent,
+            transparent 2em,
+            var(--light-gray) 2em,
+            var(--light-gray) calc(2em + 1px)
+        );
+    background-size: 100% 2em;
+    line-height: 2em;
 }
 
 .profile-description p {
-    line-height: 2.5;
-    padding: 10px 0;
     margin: 0;
-    border-bottom: 1px solid var(--light-gray);
     position: relative;
-}
-
-.profile-description p:last-child {
-    border-bottom: none;
+    z-index: 1;
 }
 
 /* ボイスサンプル */
@@ -423,7 +428,22 @@ main {
 .equipment-list li {
     padding: 8px 0;
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.8;
+    position: relative;
+}
+
+.equipment-label {
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.equipment-name {
+    color: var(--text-color);
+}
+
+.equipment-indent {
+    display: inline-block;
+    margin-left: 8em;
 }
 
 .setup-note {
@@ -439,11 +459,6 @@ main {
     color: var(--primary-color);
     line-height: 2;
     font-weight: 500;
-}
-
-.indent {
-    display: inline-block;
-    margin-left: 11em; /* 実際に表示を見ながら調整してください */
 }
 
 /* お問い合わせ */
@@ -620,6 +635,10 @@ main {
         gap: 20px;
     }
     
+    .equipment-indent {
+        margin-left: 2em;
+    }
+    
     /* お問い合わせ */
     .contact-form {
         padding: 30px 20px;
@@ -643,6 +662,16 @@ main {
     
     .profile-description {
         padding: 20px;
+        font-size: 0.9rem;
+        line-height: 1.8em;
+        background-size: 100% 1.8em;
+        background-image: 
+            repeating-linear-gradient(
+                transparent,
+                transparent 1.8em,
+                var(--light-gray) 1.8em,
+                var(--light-gray) calc(1.8em + 1px)
+            );
     }
     
     .sample-item,
