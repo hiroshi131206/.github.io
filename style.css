@@ -249,8 +249,8 @@ main {
             var(--light-gray) 2.5em
         );
     background-size: 100% 2.5em;
-    background-position: 0 0.5em;
-    padding-bottom: 0.5em;
+    background-position: 0 2.5em;
+    padding-top: 0.5em;
 }
 
 /* ボイスサンプル */
@@ -687,7 +687,8 @@ main {
     .profile-description p {
         line-height: 2em;
         background-size: 100% 2em;
-        background-position: 0 0.4em;
+        background-position: 0 2em;
+        padding-top: 0.4em;
         background-image: 
             repeating-linear-gradient(
                 to bottom,
