@@ -436,6 +436,10 @@ main {
     position: relative;
 }
 
+.equipment-list li.equipment-sub-item {
+    padding-left: 30px;
+}
+
 .equipment-list li.equipment-multiline {
     display: table;
     width: 100%;
@@ -656,6 +660,10 @@ main {
     
     .equipment-indent {
         margin-left: 2em;
+    }
+    
+    .equipment-list li.equipment-sub-item {
+        padding-left: 20px;
     }
     
     /* お問い合わせ */
