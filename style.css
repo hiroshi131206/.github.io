@@ -432,18 +432,33 @@ main {
     position: relative;
 }
 
+.equipment-list li.equipment-multiline {
+    display: table;
+    width: 100%;
+}
+
 .equipment-label {
     font-weight: 500;
     color: var(--secondary-color);
+    display: table-cell;
+    white-space: nowrap;
+    padding-right: 0.5em;
 }
 
 .equipment-name {
     color: var(--text-color);
 }
 
-.equipment-indent {
-    display: inline-block;
-    margin-left: 8em;
+.equipment-items {
+    display: table-cell;
+    line-height: 1.8;
+}
+
+/* 2行目以降のインデント */
+.equipment-items br {
+    display: block;
+    content: "";
+    margin-bottom: 0;
 }
 
 .setup-note {
