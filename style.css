@@ -94,64 +94,27 @@ body {
     }
 }
 
-/* 海の波のアニメーション（俯瞰視点） */
-@keyframes oceanRipple1 {
+/* 海の波のアニメーション（背景全体が波打つ） */
+@keyframes oceanWaves {
     0% {
-        transform: scale(0.8) translateX(-50px) translateY(-30px);
-        opacity: 0.4;
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+        background-size: 200% 200%, 150% 150%, 300% 300%;
+    }
+    25% {
+        background-position: 25% 25%, 75% 125%, 25% 75%;
+        background-size: 250% 180%, 180% 120%, 350% 250%;
     }
     50% {
-        transform: scale(1.2) translateX(30px) translateY(20px);
-        opacity: 0.2;
+        background-position: 50% 50%, 50% 150%, 0% 100%;
+        background-size: 300% 150%, 200% 100%, 400% 200%;
+    }
+    75% {
+        background-position: 75% 25%, 25% 175%, 75% 125%;
+        background-size: 250% 180%, 180% 120%, 350% 250%;
     }
     100% {
-        transform: scale(1.5) translateX(80px) translateY(50px);
-        opacity: 0;
-    }
-}
-
-@keyframes oceanRipple2 {
-    0% {
-        transform: scale(0.6) translateX(60px) translateY(40px);
-        opacity: 0.3;
-    }
-    50% {
-        transform: scale(1.1) translateX(-20px) translateY(-10px);
-        opacity: 0.15;
-    }
-    100% {
-        transform: scale(1.8) translateX(-90px) translateY(-60px);
-        opacity: 0;
-    }
-}
-
-@keyframes oceanRipple3 {
-    0% {
-        transform: scale(1) translateX(20px) translateY(-40px);
-        opacity: 0.25;
-    }
-    50% {
-        transform: scale(1.4) translateX(-40px) translateY(10px);
-        opacity: 0.1;
-    }
-    100% {
-        transform: scale(2) translateX(-100px) translateY(70px);
-        opacity: 0;
-    }
-}
-
-@keyframes oceanFlow {
-    0% {
-        transform: translateX(-100px) translateY(-50px) rotate(0deg);
-        opacity: 0.2;
-    }
-    50% {
-        transform: translateX(50px) translateY(30px) rotate(5deg);
-        opacity: 0.35;
-    }
-    100% {
-        transform: translateX(200px) translateY(80px) rotate(10deg);
-        opacity: 0.1;
+        background-position: 100% 0%, 0% 200%, 100% 150%;
+        background-size: 200% 200%, 150% 150%, 300% 300%;
     }
 }
 
@@ -384,105 +347,32 @@ main {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 30% 70%, rgba(84, 110, 122, 0.1) 0%, transparent 60%),
-        linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.02) 50%, transparent 55%);
-    animation: deepSeaFlow 15s ease-in-out infinite;
+        radial-gradient(ellipse at 20% 30%, rgba(84, 110, 122, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(176, 190, 197, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 40% 80%, rgba(84, 110, 122, 0.1) 0%, transparent 45%),
+        linear-gradient(45deg, 
+            rgba(26, 31, 46, 0.8) 0%, 
+            rgba(44, 52, 68, 0.6) 25%, 
+            rgba(26, 31, 46, 0.8) 50%, 
+            rgba(61, 71, 89, 0.7) 75%, 
+            rgba(26, 31, 46, 0.8) 100%
+        );
+    animation: oceanWaves 25s ease-in-out infinite;
+    z-index: 0;
 }
 
-/* 海の俯瞰視点オーバーレイ */
-.hero-ocean {
+/* 追加の深海エフェクト */
+.hero::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* 海の波紋レイヤー */
-.hero-ocean::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    width: 300px;
-    height: 150px;
+    right: 0;
+    bottom: 0;
     background: 
-        radial-gradient(ellipse, 
-            rgba(84, 110, 122, 0.15) 0%, 
-            rgba(84, 110, 122, 0.08) 40%, 
-            transparent 70%
-        );
-    border-radius: 50%;
-    animation: oceanRipple1 25s ease-in-out infinite;
-}
-
-.hero-ocean::after {
-    content: '';
-    position: absolute;
-    top: 60%;
-    right: 15%;
-    width: 250px;
-    height: 120px;
-    background: 
-        radial-gradient(ellipse, 
-            rgba(176, 190, 197, 0.12) 0%, 
-            rgba(84, 110, 122, 0.06) 45%, 
-            transparent 75%
-        );
-    border-radius: 50%;
-    animation: oceanRipple2 30s ease-in-out infinite 5s;
-}
-
-/* 追加の波紋エフェクト */
-.ocean-ripple-1 {
-    position: absolute;
-    top: 40%;
-    right: 25%;
-    width: 200px;
-    height: 100px;
-    background: 
-        radial-gradient(ellipse, 
-            rgba(135, 152, 163, 0.1) 0%, 
-            rgba(84, 110, 122, 0.05) 50%, 
-            transparent 80%
-        );
-    border-radius: 50%;
-    animation: oceanRipple3 35s ease-in-out infinite 10s;
-}
-
-.ocean-ripple-2 {
-    position: absolute;
-    top: 15%;
-    right: 40%;
-    width: 180px;
-    height: 90px;
-    background: 
-        radial-gradient(ellipse, 
-            rgba(84, 110, 122, 0.08) 0%, 
-            rgba(176, 190, 197, 0.04) 55%, 
-            transparent 85%
-        );
-    border-radius: 50%;
-    animation: oceanFlow 28s ease-in-out infinite 8s;
-}
-
-.ocean-ripple-3 {
-    position: absolute;
-    bottom: 25%;
-    left: 20%;
-    width: 220px;
-    height: 110px;
-    background: 
-        radial-gradient(ellipse, 
-            rgba(176, 190, 197, 0.09) 0%, 
-            rgba(84, 110, 122, 0.05) 50%, 
-            transparent 75%
-        );
-    border-radius: 50%;
-    animation: oceanRipple1 32s ease-in-out infinite 15s;
+        radial-gradient(circle at 60% 40%, rgba(84, 110, 122, 0.08) 0%, transparent 70%);
+    animation: deepSeaFlow 15s ease-in-out infinite;
+    z-index: 0;
 }
 
 .hero-content {
@@ -595,6 +485,17 @@ main {
     aspect-ratio: 3/4;
     transition: all 0.4s ease;
     border: 2px solid var(--border-medium);
+    /* セキュリティ対策 */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 .profile-image img:hover {
@@ -715,12 +616,6 @@ main {
     z-index: 2;
 }
 
-.sample-item audio {
-    width: 100%;
-    position: relative;
-    z-index: 2;
-}
-
 /* 動画コンテンツ */
 .video-grid {
     display: grid;
@@ -755,6 +650,33 @@ main {
     box-shadow: var(--shadow-medium);
 }
 
+.video-description {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-weight: 400;
+}
+
+.sample-item audio {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    /* セキュリティ対策 */
+    pointer-events: auto;
+}
+
+/* メディア要素のセキュリティ強化 */
+.sample-item,
+.video-item {
+    /* 選択・コピー防止 */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* iframe要素のセキュリティ */
 .video-wrapper iframe {
     position: absolute;
     top: 0;
@@ -762,6 +684,8 @@ main {
     width: 100%;
     height: 100%;
     border: none;
+    /* セキュリティ対策 */
+    pointer-events: auto;
 }
 
 .video-description {
@@ -1269,24 +1193,6 @@ main {
         font-size: 1.2rem;
     }
     
-    /* 海のアニメーション（タブレット調整） */
-    .hero-ocean::before {
-        width: 250px;
-        height: 125px;
-    }
-    
-    .hero-ocean::after {
-        width: 200px;
-        height: 100px;
-    }
-    
-    .ocean-ripple-1,
-    .ocean-ripple-2,
-    .ocean-ripple-3 {
-        width: 160px;
-        height: 80px;
-    }
-    
     /* セクション */
     .section {
         padding: 60px 0;
@@ -1351,24 +1257,6 @@ main {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
-    }
-    
-    /* 海のアニメーション（スマートフォン調整） */
-    .hero-ocean::before {
-        width: 180px;
-        height: 90px;
-    }
-    
-    .hero-ocean::after {
-        width: 150px;
-        height: 75px;
-    }
-    
-    .ocean-ripple-1,
-    .ocean-ripple-2,
-    .ocean-ripple-3 {
-        width: 120px;
-        height: 60px;
     }
     
     .section-title {

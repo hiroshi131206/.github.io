@@ -99,3 +99,115 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 2000);
 });
+
+// メディアプレイヤーの同時再生防止機能
+document.addEventListener('DOMContentLoaded', () => {
+    const audioElements = document.querySelectorAll('audio');
+    const videoElements = document.querySelectorAll('iframe');
+    
+    // 音声ファイルの同時再生防止
+    audioElements.forEach(audio => {
+        audio.addEventListener('play', () => {
+            // 他の音声を停止
+            audioElements.forEach(otherAudio => {
+                if (otherAudio !== audio && !otherAudio.paused) {
+                    otherAudio.pause();
+                    otherAudio.currentTime = 0;
+                }
+            });
+            
+            // 動画も停止（YouTube等の外部動画は制御が困難だが、試行）
+            videoElements.forEach(video => {
+                try {
+                    // Google Drive動画の停止を試行
+                    if (video.src.includes('drive.google.com')) {
+                        video.src = video.src;
+                    }
+                } catch (e) {
+                    // 外部動画の制御エラーは無視
+                    console.log('動画制御に制限があります');
+                }
+            });
+        });
+    });
+});
+
+// セキュリティ機能
+document.addEventListener('DOMContentLoaded', () => {
+    // 右クリック禁止（プロフィール画像エリア）
+    const profileImage = document.querySelector('.profile-image');
+    if (profileImage) {
+        profileImage.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        
+        // ドラッグ禁止
+        profileImage.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+            return false;
+        });
+    }
+    
+    // 音声・動画要素の右クリック禁止
+    const mediaElements = document.querySelectorAll('audio, iframe');
+    mediaElements.forEach(media => {
+        media.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+    });
+    
+    // 開発者ツール検知（基本的な対策）
+    let devtools = {
+        open: false,
+        orientation: null
+    };
+    
+    const threshold = 160;
+    setInterval(() => {
+        if (window.outerHeight - window.innerHeight > threshold || 
+            window.outerWidth - window.innerWidth > threshold) {
+            if (!devtools.open) {
+                devtools.open = true;
+                // 開発者ツールが開かれた場合の警告（必要に応じて）
+                console.clear();
+                console.log('%c警告', 'color: red; font-size: 20px; font-weight: bold;');
+                console.log('%cこのサイトのコンテンツは著作権で保護されています。', 'color: red; font-size: 14px;');
+            }
+        } else {
+            devtools.open = false;
+        }
+    }, 500);
+    
+    // キーボードショートカット無効化
+    document.addEventListener('keydown', (e) => {
+        // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U を無効化
+        if (e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+            (e.ctrlKey && e.key === 'u')) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Ctrl+S (保存) を無効化
+        if (e.ctrlKey && e.key === 's') {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    // 選択・コピー防止（プロフィール画像とメディアエリア）
+    const protectedAreas = document.querySelectorAll('.profile-image, .sample-item, .video-item');
+    protectedAreas.forEach(area => {
+        area.style.userSelect = 'none';
+        area.style.webkitUserSelect = 'none';
+        area.style.mozUserSelect = 'none';
+        area.style.msUserSelect = 'none';
+        
+        area.addEventListener('selectstart', (e) => {
+            e.preventDefault();
+            return false;
+        });
+    });
+});
