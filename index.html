@@ -449,12 +449,21 @@
             lastScroll = currentScroll;
         });
 
-        // 上に戻るボタンのクリックイベント
+        // 上に戻るボタンのクリックイベント（抜錨アニメーション付き）
         scrollToTopButton.addEventListener('click', () => {
+            // 抜錨アニメーションを開始
+            scrollToTopButton.classList.add('weighing-anchor');
+            
+            // スムーズスクロール
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
+            
+            // アニメーション終了後にクラスを削除
+            setTimeout(() => {
+                scrollToTopButton.classList.remove('weighing-anchor');
+            }, 800);
         });
 
         // 控えめなスクロールアニメーション
