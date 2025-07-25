@@ -100,35 +100,214 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
 });
 
-// メディアプレイヤーの同時再生防止機能
+// 改良版メディアプレイヤーの同時再生防止機能
 document.addEventListener('DOMContentLoaded', () => {
-    const audioElements = document.querySelectorAll('audio');
-    const videoElements = document.querySelectorAll('iframe');
-    
-    // 音声ファイルの同時再生防止
-    audioElements.forEach(audio => {
-        audio.addEventListener('play', () => {
-            // 他の音声を停止
-            audioElements.forEach(otherAudio => {
-                if (otherAudio !== audio && !otherAudio.paused) {
-                    otherAudio.pause();
-                    otherAudio.currentTime = 0;
+    // メディア要素の管理
+    const mediaManager = {
+        currentlyPlaying: null,
+        audioElements: [],
+        videoElements: [],
+        
+        init() {
+            // 音声要素を収集
+            this.audioElements = Array.from(document.querySelectorAll('audio'));
+            // 動画要素（iframe）を収集
+            this.videoElements = Array.from(document.querySelectorAll('iframe'));
+            
+            // 各メディア要素にユニークIDを付与
+            this.audioElements.forEach((audio, index) => {
+                audio.setAttribute('data-media-id', `audio-${index}`);
+                this.setupAudioEvents(audio);
+            });
+            
+            this.videoElements.forEach((iframe, index) => {
+                iframe.setAttribute('data-media-id', `video-${index}`);
+                this.setupVideoEvents(iframe);
+            });
+            
+            // ページの可視性変更時にすべてのメディアを停止
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    this.stopAllMedia();
+                }
+            });
+        },
+        
+        setupAudioEvents(audio) {
+            // 音声再生開始時
+            audio.addEventListener('play', () => {
+                const mediaId = audio.getAttribute('data-media-id');
+                this.stopOtherMedia(mediaId);
+                this.currentlyPlaying = mediaId;
+            });
+            
+            // 音声停止・終了時
+            audio.addEventListener('pause', () => {
+                if (this.currentlyPlaying === audio.getAttribute('data-media-id')) {
+                    this.currentlyPlaying = null;
                 }
             });
             
-            // 動画も停止（YouTube等の外部動画は制御が困難だが、試行）
-            videoElements.forEach(video => {
-                try {
-                    // Google Drive動画の停止を試行
-                    if (video.src.includes('drive.google.com')) {
-                        video.src = video.src;
-                    }
-                } catch (e) {
-                    // 外部動画の制御エラーは無視
-                    console.log('動画制御に制限があります');
+            audio.addEventListener('ended', () => {
+                if (this.currentlyPlaying === audio.getAttribute('data-media-id')) {
+                    this.currentlyPlaying = null;
                 }
             });
-        });
+        },
+        
+        setupVideoEvents(iframe) {
+            const mediaId = iframe.getAttribute('data-media-id');
+            
+            // iframeのクリックを検知するためのオーバーレイを作成
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                background: transparent;
+                cursor: pointer;
+            `;
+            
+            // iframe要素の親要素の位置情報を確保
+            const wrapper = iframe.closest('.video-wrapper');
+            if (wrapper) {
+                wrapper.style.position = 'relative';
+                wrapper.appendChild(overlay);
+                
+                // オーバーレイクリック時に他のメディアを停止
+                overlay.addEventListener('click', () => {
+                    this.stopOtherMedia(mediaId);
+                    this.currentlyPlaying = mediaId;
+                    
+                    // 短時間後にオーバーレイを非表示にして動画操作を可能にする
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 100);
+                });
+                
+                // 動画が停止されたときオーバーレイを再表示
+                const resetOverlay = () => {
+                    overlay.style.display = 'block';
+                    if (this.currentlyPlaying === mediaId) {
+                        this.currentlyPlaying = null;
+                    }
+                };
+                
+                // マウスが動画エリアから離れたらオーバーレイを再表示
+                wrapper.addEventListener('mouseleave', resetOverlay);
+            }
+            
+            // YouTube動画の場合、より積極的な制御を試行
+            if (iframe.src.includes('youtube.com') || iframe.src.includes('youtu.be')) {
+                this.setupYouTubeControl(iframe);
+            }
+        },
+        
+        setupYouTubeControl(iframe) {
+            // YouTube Player APIの読み込みを試行
+            if (typeof YT === 'undefined' && !window.youtubeAPILoading) {
+                window.youtubeAPILoading = true;
+                const script = document.createElement('script');
+                script.src = 'https://www.youtube.com/iframe_api';
+                document.head.appendChild(script);
+            }
+        },
+        
+        stopOtherMedia(currentMediaId) {
+            // 他の音声を停止
+            this.audioElements.forEach(audio => {
+                const audioId = audio.getAttribute('data-media-id');
+                if (audioId !== currentMediaId && !audio.paused) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            });
+            
+            // 他の動画を制御（強制的にsrcを更新）
+            this.videoElements.forEach(iframe => {
+                const videoId = iframe.getAttribute('data-media-id');
+                if (videoId !== currentMediaId) {
+                    this.stopVideo(iframe);
+                }
+            });
+        },
+        
+        stopVideo(iframe) {
+            try {
+                const originalSrc = iframe.src;
+                
+                if (originalSrc.includes('youtube.com') || originalSrc.includes('youtu.be')) {
+                    // YouTube動画の場合：autoplay=0を確実に付与
+                    const url = new URL(originalSrc);
+                    url.searchParams.set('autoplay', '0');
+                    url.searchParams.delete('autoplay=1');
+                    iframe.src = url.toString();
+                    
+                    // 少し待ってから元のURLに戻す（停止効果）
+                    setTimeout(() => {
+                        iframe.src = originalSrc;
+                    }, 100);
+                    
+                } else if (originalSrc.includes('drive.google.com')) {
+                    // Google Drive動画の場合：srcを一時的にクリア
+                    iframe.src = 'about:blank';
+                    setTimeout(() => {
+                        iframe.src = originalSrc;
+                    }, 200);
+                    
+                } else {
+                    // その他の動画：src更新で停止を試行
+                    iframe.src = iframe.src;
+                }
+                
+            } catch (error) {
+                console.log('動画制御に制限があります:', error);
+            }
+        },
+        
+        stopAllMedia() {
+            // すべての音声を停止
+            this.audioElements.forEach(audio => {
+                if (!audio.paused) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            });
+            
+            // すべての動画を停止
+            this.videoElements.forEach(iframe => {
+                this.stopVideo(iframe);
+            });
+            
+            this.currentlyPlaying = null;
+        }
+    };
+    
+    // メディアマネージャーを初期化
+    mediaManager.init();
+    
+    // 追加のフォーカス制御
+    window.addEventListener('blur', () => {
+        mediaManager.stopAllMedia();
+    });
+    
+    // ウィンドウサイズ変更時にオーバーレイ位置を調整
+    window.addEventListener('resize', () => {
+        // レイアウト調整のための小さな遅延
+        setTimeout(() => {
+            document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+                const iframe = wrapper.querySelector('iframe');
+                const overlay = wrapper.querySelector('div[style*="position: absolute"]');
+                if (iframe && overlay) {
+                    const rect = iframe.getBoundingClientRect();
+                    const wrapperRect = wrapper.getBoundingClientRect();
+                    // オーバーレイ位置を再調整（必要に応じて）
+                }
+            });
+        }, 100);
     });
 });
 
