@@ -475,8 +475,8 @@ main {
             rgba(84, 110, 122, 0.18) 2em
         );
     background-size: 100% 2em;
-    background-position: 0 1em;
-    padding-top: 1em;
+    background-position: 0 2em;
+    padding-top: 0.5em;
 }
 
 /* 落ち着いたボイスサンプル */
@@ -939,6 +939,56 @@ main {
     font-weight: 400;
 }
 
+/* 海上自衛隊風上に戻るボタン */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: var(--gradient-primary);
+    border: 2px solid var(--steel-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(10px);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, var(--navy-deep), var(--steel-gray));
+    border-color: var(--silver-muted);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-deep);
+}
+
+.scroll-to-top::before {
+    content: "⚓";
+    font-size: 1.8rem;
+    color: var(--platinum-subtle);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    animation: quietFloat 4s ease-in-out infinite;
+}
+
+.scroll-to-top:hover::before {
+    color: var(--silver-muted);
+    transform: rotate(-15deg);
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 1024px) {
     .hero-title {
@@ -1057,6 +1107,18 @@ main {
     .setup-note {
         padding: 40px;
     }
+    
+    /* 上に戻るボタン（モバイル） */
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .scroll-to-top::before {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1086,8 +1148,8 @@ main {
     .profile-description p {
         line-height: 1.8em;
         background-size: 100% 1.8em;
-        background-position: 0 0.9em;
-        padding-top: 0.9em;
+        background-position: 0 1.8em;
+        padding-top: 0.4em;
         background-image: 
             repeating-linear-gradient(
                 to bottom,
@@ -1114,5 +1176,17 @@ main {
     
     .setup-note {
         padding: 32px;
+    }
+    
+    /* 上に戻るボタン（小画面） */
+    .scroll-to-top {
+        bottom: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .scroll-to-top::before {
+        font-size: 1.3rem;
     }
 }
