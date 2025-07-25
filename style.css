@@ -94,6 +94,45 @@ body {
     }
 }
 
+/* 海の波のアニメーション */
+@keyframes oceanWave1 {
+    0% {
+        transform: translateX(-100%) translateZ(0);
+    }
+    100% {
+        transform: translateX(100%) translateZ(0);
+    }
+}
+
+@keyframes oceanWave2 {
+    0% {
+        transform: translateX(-100%) translateZ(0);
+    }
+    100% {
+        transform: translateX(100%) translateZ(0);
+    }
+}
+
+@keyframes oceanWave3 {
+    0% {
+        transform: translateX(-100%) translateZ(0);
+    }
+    100% {
+        transform: translateX(100%) translateZ(0);
+    }
+}
+
+@keyframes deepSeaFlow {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-8px) scale(1.05);
+        opacity: 0.5;
+    }
+}
+
 /* 特別なアニメーション（setup-note専用） */
 @keyframes majestFloat {
     0%, 100% {
@@ -314,7 +353,78 @@ main {
     background: 
         radial-gradient(circle at 30% 70%, rgba(84, 110, 122, 0.1) 0%, transparent 60%),
         linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.02) 50%, transparent 55%);
-    animation: quietFloat 12s ease-in-out infinite;
+    animation: deepSeaFlow 15s ease-in-out infinite;
+}
+
+/* 海の波レイヤー */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(84, 110, 122, 0.08) 25%, 
+            rgba(176, 190, 197, 0.06) 50%, 
+            rgba(84, 110, 122, 0.08) 75%, 
+            transparent 100%
+        );
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    animation: oceanWave1 20s linear infinite;
+    z-index: 1;
+}
+
+/* 追加の波レイヤー */
+.hero-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-waves::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300%;
+    height: 80px;
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(176, 190, 197, 0.04) 20%, 
+            rgba(84, 110, 122, 0.06) 40%, 
+            rgba(176, 190, 197, 0.04) 60%, 
+            rgba(84, 110, 122, 0.06) 80%, 
+            transparent 100%
+        );
+    border-radius: 60% 40% 0 0 / 100% 100% 0 0;
+    animation: oceanWave2 25s linear infinite reverse;
+}
+
+.hero-waves::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 250%;
+    height: 60px;
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(135, 152, 163, 0.03) 30%, 
+            rgba(84, 110, 122, 0.05) 50%, 
+            rgba(135, 152, 163, 0.03) 70%, 
+            transparent 100%
+        );
+    border-radius: 40% 60% 0 0 / 100% 100% 0 0;
+    animation: oceanWave3 30s linear infinite;
 }
 
 .hero-content {
@@ -1093,6 +1203,22 @@ main {
         min-height: 55vh;
     }
     
+    .hero::after {
+        height: 60px;
+    }
+    
+    .hero-waves {
+        height: 80px;
+    }
+    
+    .hero-waves::before {
+        height: 50px;
+    }
+    
+    .hero-waves::after {
+        height: 40px;
+    }
+    
     .hero-title {
         font-size: 2.4rem;
     }
@@ -1165,6 +1291,22 @@ main {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
+    }
+    
+    .hero::after {
+        height: 40px;
+    }
+    
+    .hero-waves {
+        height: 60px;
+    }
+    
+    .hero-waves::before {
+        height: 35px;
+    }
+    
+    .hero-waves::after {
+        height: 25px;
     }
     
     .section-title {
