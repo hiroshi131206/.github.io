@@ -78,8 +78,8 @@
                         </table>
                         <div class="profile-description animate-on-scroll">
                             <p>東海圏を中心にナレーションを主軸として活動しているナレーター・声優です。<br>
-                            HAL入学以前は海上自衛隊にて護衛艦に乗り組み、銃火器やミサイル等を扱っておりました。<br>
-                            豊かな経験から引き出される演技と、深く重厚な声域を活かした響くナレーションが特徴です。</p>
+                            HAL名古屋入学以前は海上自衛隊にて護衛艦に乗り組み、銃火器やミサイル等を扱っておりました。<br>
+                            豊かな経験から引き出される演技と、深く重厚な声域を活かした底に響くナレーションが特徴です。</p>
                         </div>
                     </div>
                 </div>
@@ -230,7 +230,8 @@
                         <li>難しい漢字等にはルビやアクセントの指示をお願いいたします。<br>読み方が2通りある、繋げて読んで欲しい箇所等をご指示ください。</li>
                         <li>ナレーションやキャラクターのイメージをお伝えください。<br>ナレーションは参考動画をお送りいただくか、ボイスサンプルからお選びいただけるとスムーズです</li>
                         <li>AI学習・成人向け・公序良俗に反する内容、著作権侵害の恐れのある内容はお引き受けできかねます。</li>
-                        <li>放送媒体、使用用途、使用期限等、詳細をお伝えください。収録データの二次利用をご希望の場合は、事前にご相談ください。</li>
+                        <li>放送媒体、使用用途、使用期限等、詳細をお伝えください。</li>
+                        <li>収録データの二次利用をご希望の場合は、事前にご相談ください。</li>
                         <li>著作権・肖像権に関わる内容は、別途契約書を交わさせていただきます。</li>
                         <li>ご依頼内容によってはお断りする場合もございます。あらかじめご了承ください。</li>
                     </ul>
@@ -380,6 +381,9 @@
         </section>
     </main>
 
+    <!-- 上に戻るボタン -->
+    <div class="scroll-to-top" id="scrollToTop" aria-label="上に戻る"></div>
+
     <!-- フッター -->
     <footer class="footer">
         <div class="container">
@@ -420,20 +424,37 @@
             });
         });
 
-        // スクロール時のヘッダー処理
+        // スクロール時のヘッダー処理と上に戻るボタン
         let lastScroll = 0;
         const header = document.querySelector('.header');
+        const scrollToTopButton = document.getElementById('scrollToTop');
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             
+            // ヘッダーの処理
             if (currentScroll > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
             
+            // 上に戻るボタンの表示/非表示
+            if (currentScroll > 300) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
+            
             lastScroll = currentScroll;
+        });
+
+        // 上に戻るボタンのクリックイベント
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
         // 控えめなスクロールアニメーション
