@@ -56,6 +56,10 @@
     --gold-bright: #ffd700;
     --gradient-gold: linear-gradient(135deg, #b8860b 0%, #ffd700 50%, #daa520 100%);
     --shadow-massive: 0 24px 64px rgba(15, 20, 25, 0.3);
+    
+    /* サウンドハウスのブランドカラー */
+    --soundhouse-orange: #ff6600;
+    --soundhouse-dark: #cc5200;
 }
 
 body {
@@ -108,333 +112,183 @@ body {
     }
 }
 
-/* より動的で複雑な海の波のアニメーション */
-@keyframes dynamicOceanWaves {
+/* 穏やかなさざ波のアニメーション */
+@keyframes gentleRipples {
     0% {
         background-position: 
-            0% 0%, 100% 0%, 50% 50%, 25% 75%, 75% 25%, 
-            0% 100%, 50% 0%, 100% 50%, 25% 25%, 75% 75%;
+            0% 50%, 100% 50%, 25% 75%, 75% 25%, 50% 0%;
         background-size: 
-            180% 200%, 250% 180%, 400% 350%, 350% 280%, 280% 220%,
-            320% 240%, 200% 160%, 450% 300%, 300% 200%, 260% 180%;
-        transform: scale(1) rotate(0deg);
-        opacity: 0.8;
-    }
-    
-    12% {
-        background-position: 
-            20% 60%, 80% 40%, 10% 90%, 70% 30%, 30% 70%,
-            40% 20%, 90% 80%, 20% 40%, 60% 60%, 80% 20%;
-        background-size: 
-            220% 240%, 300% 200%, 500% 280%, 380% 220%, 320% 180%,
-            360% 200%, 240% 140%, 480% 260%, 340% 160%, 300% 140%;
-        transform: scale(1.08) rotate(2deg);
-        opacity: 0.9;
+            200% 120%, 180% 140%, 220% 100%, 160% 130%, 240% 110%;
+        transform: translateY(0px) scaleY(1);
+        opacity: 0.6;
     }
     
     25% {
         background-position: 
-            60% 90%, 40% 10%, 80% 20%, 10% 80%, 90% 40%,
-            70% 60%, 30% 30%, 50% 90%, 20% 10%, 90% 70%;
+            25% 60%, 75% 40%, 50% 80%, 50% 20%, 25% 25%;
         background-size: 
-            350% 280%, 180% 220%, 600% 320%, 280% 240%, 380% 200%,
-            280% 180%, 420% 240%, 360% 200%, 400% 180%, 320% 160%;
-        transform: scale(1.15) rotate(-1deg);
-        opacity: 0.85;
-    }
-    
-    37% {
-        background-position: 
-            90% 30%, 10% 70%, 30% 50%, 80% 90%, 50% 10%,
-            20% 80%, 80% 20%, 60% 70%, 40% 30%, 70% 90%;
-        background-size: 
-            280% 200%, 320% 260%, 450% 380%, 420% 300%, 300% 240%,
-            340% 220%, 380% 180%, 440% 280%, 360% 220%, 280% 200%;
-        transform: scale(1.12) rotate(3deg);
-        opacity: 0.92;
+            240% 140%, 200% 120%, 180% 120%, 200% 110%, 220% 130%;
+        transform: translateY(-2px) scaleY(1.05);
+        opacity: 0.7;
     }
     
     50% {
         background-position: 
-            40% 80%, 70% 20%, 90% 60%, 20% 40%, 60% 80%,
-            10% 50%, 90% 10%, 30% 80%, 80% 50%, 50% 20%;
+            50% 70%, 50% 30%, 75% 85%, 25% 15%, 0% 50%;
         background-size: 
-            320% 240%, 280% 200%, 520% 340%, 350% 260%, 340% 220%,
-            380% 200%, 320% 160%, 500% 300%, 380% 200%, 320% 180%;
-        transform: scale(1.20) rotate(-2deg);
-        opacity: 0.88;
-    }
-    
-    62% {
-        background-position: 
-            80% 10%, 30% 90%, 60% 30%, 40% 70%, 20% 50%,
-            90% 40%, 10% 90%, 70% 10%, 30% 60%, 60% 30%;
-        background-size: 
-            380% 220%, 340% 180%, 480% 280%, 320% 200%, 360% 180%,
-            300% 220%, 280% 200%, 420% 260%, 340% 180%, 300% 160%;
-        transform: scale(1.10) rotate(1deg);
-        opacity: 0.94;
+            220% 160%, 240% 100%, 200% 140%, 180% 120%, 260% 120%;
+        transform: translateY(-3px) scaleY(1.08);
+        opacity: 0.8;
     }
     
     75% {
         background-position: 
-            10% 50%, 80% 60%, 20% 80%, 90% 10%, 40% 30%,
-            60% 70%, 20% 30%, 90% 60%, 10% 20%, 70% 80%;
+            75% 40%, 25% 60%, 0% 90%, 100% 10%, 75% 75%;
         background-size: 
-            300% 260%, 380% 240%, 560% 300%, 400% 280%, 320% 200%,
-            360% 240%, 340% 200%, 480% 320%, 400% 240%, 340% 200%;
-        transform: scale(1.16) rotate(-3deg);
-        opacity: 0.87;
-    }
-    
-    87% {
-        background-position: 
-            70% 40%, 20% 80%, 50% 10%, 70% 60%, 90% 20%,
-            30% 90%, 80% 40%, 40% 70%, 60% 10%, 20% 60%;
-        background-size: 
-            260% 200%, 300% 220%, 440% 260%, 360% 240%, 300% 180%,
-            320% 200%, 360% 160%, 420% 280%, 340% 200%, 320% 160%;
-        transform: scale(1.14) rotate(2deg);
-        opacity: 0.91;
+            180% 130%, 220% 110%, 240% 120%, 200% 140%, 200% 100%;
+        transform: translateY(-1px) scaleY(1.03);
+        opacity: 0.7;
     }
     
     100% {
         background-position: 
-            0% 0%, 100% 0%, 50% 50%, 25% 75%, 75% 25%,
-            0% 100%, 50% 0%, 100% 50%, 25% 25%, 75% 75%;
+            100% 50%, 0% 50%, 75% 25%, 25% 75%, 50% 100%;
         background-size: 
-            180% 200%, 250% 180%, 400% 350%, 350% 280%, 280% 220%,
-            320% 240%, 200% 160%, 450% 300%, 300% 200%, 260% 180%;
-        transform: scale(1) rotate(0deg);
-        opacity: 0.8;
-    }
-}
-
-/* 深海の神秘的な流れ */
-@keyframes deepAbyssalFlow {
-    0% {
-        background-position: 
-            50% 50%, 30% 70%, 80% 20%, 10% 90%, 90% 30%,
-            20% 60%, 70% 10%, 40% 80%, 60% 40%, 80% 70%;
-        transform: scale(1) rotate(0deg) translateZ(0);
-        opacity: 0.7;
-        filter: hue-rotate(0deg) brightness(0.8) contrast(1.2);
-    }
-    
-    16% {
-        background-position: 
-            20% 80%, 60% 40%, 40% 80%, 70% 20%, 30% 60%,
-            80% 10%, 10% 70%, 90% 30%, 50% 90%, 20% 40%;
-        transform: scale(1.15) rotate(3deg) translateZ(0);
-        opacity: 0.85;
-        filter: hue-rotate(15deg) brightness(0.9) contrast(1.3);
-    }
-    
-    33% {
-        background-position: 
-            80% 30%, 90% 10%, 10% 60%, 50% 90%, 70% 40%,
-            30% 20%, 60% 80%, 40% 50%, 80% 10%, 10% 80%;
-        transform: scale(1.25) rotate(-2deg) translateZ(0);
-        opacity: 0.9;
-        filter: hue-rotate(30deg) brightness(1.1) contrast(1.4);
-    }
-    
-    50% {
-        background-position: 
-            70% 90%, 20% 60%, 90% 40%, 30% 10%, 60% 70%,
-            50% 30%, 80% 60%, 10% 20%, 40% 90%, 70% 50%;
-        transform: scale(1.18) rotate(4deg) translateZ(0);
-        opacity: 0.82;
-        filter: hue-rotate(45deg) brightness(0.85) contrast(1.5);
-    }
-    
-    66% {
-        background-position: 
-            40% 20%, 70% 80%, 60% 10%, 20% 70%, 90% 50%,
-            10% 40%, 50% 90%, 80% 30%, 30% 60%, 60% 20%;
-        transform: scale(1.22) rotate(-1deg) translateZ(0);
-        opacity: 0.88;
-        filter: hue-rotate(60deg) brightness(1.0) contrast(1.3);
-    }
-    
-    83% {
-        background-position: 
-            10% 70%, 50% 20%, 30% 90%, 80% 50%, 40% 30%,
-            70% 60%, 20% 10%, 90% 80%, 60% 40%, 30% 70%;
-        transform: scale(1.12) rotate(2deg) translateZ(0);
-        opacity: 0.75;
-        filter: hue-rotate(75deg) brightness(0.9) contrast(1.2);
-    }
-    
-    100% {
-        background-position: 
-            50% 50%, 30% 70%, 80% 20%, 10% 90%, 90% 30%,
-            20% 60%, 70% 10%, 40% 80%, 60% 40%, 80% 70%;
-        transform: scale(1) rotate(0deg) translateZ(0);
-        opacity: 0.7;
-        filter: hue-rotate(0deg) brightness(0.8) contrast(1.2);
-    }
-}
-
-/* 海面のきらめく波 */
-@keyframes shimmeringSurfaceWaves {
-    0% {
-        background-position: 
-            0% 100%, 100% 0%, 50% 80%, 20% 20%, 80% 60%,
-            30% 90%, 70% 30%, 10% 50%, 90% 10%, 40% 70%;
-        transform: translateY(0px) scaleY(1) skewX(0deg);
+            200% 120%, 180% 140%, 220% 100%, 160% 130%, 240% 110%;
+        transform: translateY(0px) scaleY(1);
         opacity: 0.6;
-        filter: brightness(1.0) saturate(1.2);
+    }
+}
+
+/* 深海の穏やかな流れ */
+@keyframes deepSeaGentle {
+    0% {
+        background-position: 
+            30% 70%, 70% 30%, 10% 90%, 90% 10%, 50% 50%;
+        transform: scale(1) rotate(0deg);
+        opacity: 0.4;
+        filter: hue-rotate(0deg) brightness(0.9);
     }
     
     20% {
         background-position: 
-            25% 60%, 75% 40%, 80% 20%, 40% 80%, 60% 10%,
-            10% 70%, 90% 50%, 30% 30%, 70% 90%, 50% 40%;
-        transform: translateY(-8px) scaleY(1.2) skewX(2deg);
-        opacity: 0.8;
-        filter: brightness(1.3) saturate(1.4);
+            50% 50%, 50% 70%, 30% 70%, 70% 30%, 20% 80%;
+        transform: scale(1.02) rotate(0.5deg);
+        opacity: 0.5;
+        filter: hue-rotate(10deg) brightness(0.95);
     }
     
     40% {
         background-position: 
-            50% 20%, 50% 80%, 10% 90%, 70% 30%, 30% 60%,
-            80% 40%, 20% 80%, 60% 10%, 40% 60%, 90% 20%;
-        transform: translateY(-12px) scaleY(1.4) skewX(-1deg);
-        opacity: 0.85;
-        filter: brightness(1.5) saturate(1.6);
+            70% 30%, 30% 50%, 50% 50%, 50% 70%, 80% 20%;
+        transform: scale(1.05) rotate(-0.3deg);
+        opacity: 0.6;
+        filter: hue-rotate(20deg) brightness(1.0);
     }
     
     60% {
         background-position: 
-            75% 80%, 25% 20%, 90% 50%, 10% 70%, 60% 30%,
-            50% 60%, 80% 10%, 20% 90%, 70% 40%, 30% 80%;
-        transform: translateY(-6px) scaleY(1.15) skewX(1deg);
-        opacity: 0.7;
-        filter: brightness(1.2) saturate(1.3);
+            90% 10%, 10% 30%, 70% 30%, 30% 50%, 60% 40%;
+        transform: scale(1.03) rotate(0.8deg);
+        opacity: 0.5;
+        filter: hue-rotate(15deg) brightness(0.95);
     }
     
     80% {
         background-position: 
-            90% 40%, 10% 60%, 40% 70%, 80% 10%, 20% 90%,
-            60% 20%, 30% 70%, 90% 30%, 10% 80%, 70% 50%;
-        transform: translateY(-4px) scaleY(1.08) skewX(-2deg);
-        opacity: 0.75;
-        filter: brightness(1.1) saturate(1.1);
+            10% 90%, 90% 10%, 50% 50%, 50% 70%, 40% 60%;
+        transform: scale(1.01) rotate(-0.2deg);
+        opacity: 0.45;
+        filter: hue-rotate(5deg) brightness(0.9);
     }
     
     100% {
         background-position: 
-            100% 40%, 0% 60%, 60% 70%, 30% 30%, 70% 90%,
-            40% 50%, 80% 20%, 50% 80%, 20% 40%, 80% 10%;
-        transform: translateY(0px) scaleY(1) skewX(0deg);
-        opacity: 0.6;
-        filter: brightness(1.0) saturate(1.2);
-    }
-}
-
-/* 光る粒子のアニメーション */
-@keyframes shimmerParticles {
-    0%, 100% {
+            30% 70%, 70% 30%, 10% 90%, 90% 10%, 50% 50%;
+        transform: scale(1) rotate(0deg);
         opacity: 0.4;
-        transform: translateY(0px) rotate(0deg);
-    }
-    25% {
-        opacity: 0.8;
-        transform: translateY(-10px) rotate(90deg);
-    }
-    50% {
-        opacity: 0.6;
-        transform: translateY(-5px) rotate(180deg);
-    }
-    75% {
-        opacity: 0.9;
-        transform: translateY(-15px) rotate(270deg);
+        filter: hue-rotate(0deg) brightness(0.9);
     }
 }
 
-/* 微細な光るアニメーション */
-@keyframes subtleGlow {
+/* 海面のきらめき（さざ波風） */
+@keyframes surfaceShimmer {
+    0% {
+        background-position: 
+            0% 100%, 100% 0%, 50% 50%;
+        transform: translateY(0px) skewX(0deg);
+        opacity: 0.3;
+        filter: brightness(1.0);
+    }
+    
+    33% {
+        background-position: 
+            33% 67%, 67% 33%, 25% 75%;
+        transform: translateY(-1px) skewX(0.5deg);
+        opacity: 0.4;
+        filter: brightness(1.1);
+    }
+    
+    66% {
+        background-position: 
+            67% 33%, 33% 67%, 75% 25%;
+        transform: translateY(-2px) skewX(-0.3deg);
+        opacity: 0.5;
+        filter: brightness(1.2);
+    }
+    
+    100% {
+        background-position: 
+            100% 0%, 0% 100%, 50% 50%;
+        transform: translateY(0px) skewX(0deg);
+        opacity: 0.3;
+        filter: brightness(1.0);
+    }
+}
+
+/* 控えめなタイトル光彩アニメーション */
+@keyframes gentleGlow {
     0%, 100% {
         text-shadow: 
-            3px 3px 6px rgba(0, 0, 0, 0.8),
-            6px 6px 12px rgba(0, 0, 0, 0.6),
-            9px 9px 18px rgba(0, 0, 0, 0.4),
-            0 0 30px rgba(176, 190, 197, 0.6),
-            0 0 60px rgba(135, 152, 163, 0.4),
-            0 0 90px rgba(84, 110, 122, 0.3),
-            -1px -1px 0 rgba(26, 31, 46, 0.8),
-            1px -1px 0 rgba(26, 31, 46, 0.8),
-            -1px 1px 0 rgba(26, 31, 46, 0.8),
-            1px 1px 0 rgba(26, 31, 46, 0.8);
-        box-shadow: 
-            inset 0 2px 4px rgba(255, 255, 255, 0.1),
-            inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+            2px 2px 4px rgba(0, 0, 0, 0.7),
+            0 0 15px rgba(176, 190, 197, 0.4),
+            -1px -1px 0 rgba(26, 31, 46, 0.6),
+            1px -1px 0 rgba(26, 31, 46, 0.6),
+            -1px 1px 0 rgba(26, 31, 46, 0.6),
+            1px 1px 0 rgba(26, 31, 46, 0.6);
     }
     
     50% {
         text-shadow: 
-            3px 3px 6px rgba(0, 0, 0, 0.8),
-            6px 6px 12px rgba(0, 0, 0, 0.6),
-            9px 9px 18px rgba(0, 0, 0, 0.4),
-            0 0 40px rgba(176, 190, 197, 0.8),
-            0 0 80px rgba(135, 152, 163, 0.6),
-            0 0 120px rgba(84, 110, 122, 0.4),
-            -1px -1px 0 rgba(26, 31, 46, 0.8),
-            1px -1px 0 rgba(26, 31, 46, 0.8),
-            -1px 1px 0 rgba(26, 31, 46, 0.8),
-            1px 1px 0 rgba(26, 31, 46, 0.8);
-        box-shadow: 
-            inset 0 2px 4px rgba(255, 255, 255, 0.15),
-            inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+            2px 2px 4px rgba(0, 0, 0, 0.7),
+            0 0 20px rgba(176, 190, 197, 0.6),
+            -1px -1px 0 rgba(26, 31, 46, 0.6),
+            1px -1px 0 rgba(26, 31, 46, 0.6),
+            -1px 1px 0 rgba(26, 31, 46, 0.6),
+            1px 1px 0 rgba(26, 31, 46, 0.6);
     }
 }
 
-/* 下線の光るアニメーション */
-@keyframes lineGlow {
-    0%, 100% {
-        box-shadow: 
-            0 0 8px rgba(176, 190, 197, 0.6),
-            0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-    
-    50% {
-        box-shadow: 
-            0 0 15px rgba(176, 190, 197, 0.9),
-            0 2px 8px rgba(0, 0, 0, 0.4);
-    }
-}
-
-/* サブタイトル専用の光るアニメーション */
-@keyframes subtitleGlow {
+/* サブタイトル用控えめアニメーション */
+@keyframes subtleSubtitleGlow {
     0%, 100% {
         text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.8),
-            4px 4px 8px rgba(0, 0, 0, 0.6),
-            0 0 20px rgba(176, 190, 197, 0.5),
-            0 0 40px rgba(135, 152, 163, 0.3),
-            -1px -1px 0 rgba(26, 31, 46, 0.7),
-            1px -1px 0 rgba(26, 31, 46, 0.7),
-            -1px 1px 0 rgba(26, 31, 46, 0.7),
-            1px 1px 0 rgba(26, 31, 46, 0.7);
-        box-shadow: 
-            inset 0 1px 2px rgba(255, 255, 255, 0.1),
-            inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+            1px 1px 2px rgba(0, 0, 0, 0.6),
+            0 0 8px rgba(135, 152, 163, 0.3),
+            -1px -1px 0 rgba(26, 31, 46, 0.4),
+            1px -1px 0 rgba(26, 31, 46, 0.4),
+            -1px 1px 0 rgba(26, 31, 46, 0.4),
+            1px 1px 0 rgba(26, 31, 46, 0.4);
     }
     
     50% {
         text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.8),
-            4px 4px 8px rgba(0, 0, 0, 0.6),
-            0 0 30px rgba(176, 190, 197, 0.7),
-            0 0 60px rgba(135, 152, 163, 0.5),
-            -1px -1px 0 rgba(26, 31, 46, 0.7),
-            1px -1px 0 rgba(26, 31, 46, 0.7),
-            -1px 1px 0 rgba(26, 31, 46, 0.7),
-            1px 1px 0 rgba(26, 31, 46, 0.7);
-        box-shadow: 
-            inset 0 1px 2px rgba(255, 255, 255, 0.15),
-            inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+            1px 1px 2px rgba(0, 0, 0, 0.6),
+            0 0 12px rgba(135, 152, 163, 0.5),
+            -1px -1px 0 rgba(26, 31, 46, 0.4),
+            1px -1px 0 rgba(26, 31, 46, 0.4),
+            -1px 1px 0 rgba(26, 31, 46, 0.4),
+            1px 1px 0 rgba(26, 31, 46, 0.4);
     }
 }
 
@@ -634,7 +488,7 @@ main {
     margin-top: var(--header-height);
 }
 
-/* 強化されたヒーローセクション */
+/* 穏やかなヒーローセクション */
 .hero {
     background: var(--gradient-primary);
     color: var(--platinum-subtle);
@@ -648,49 +502,8 @@ main {
     justify-content: center;
 }
 
-/* メインの深海背景レイヤー */
+/* 穏やかな深海背景レイヤー */
 .hero::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    left: -20%;
-    right: -20%;
-    bottom: -20%;
-    background: 
-        /* 深海の複雑なグラデーション層 */
-        radial-gradient(ellipse at 15% 25%, var(--deep-ocean-dark) 0%, rgba(10, 15, 26, 0.8) 15%, rgba(26, 35, 50, 0.6) 35%, rgba(26, 47, 82, 0.4) 55%, transparent 75%),
-        radial-gradient(ellipse at 85% 75%, var(--ocean-abyss) 0%, rgba(26, 35, 50, 0.9) 10%, rgba(42, 63, 95, 0.7) 30%, rgba(30, 58, 82, 0.5) 50%, transparent 70%),
-        radial-gradient(ellipse at 45% 15%, var(--deep-current) 0%, rgba(42, 63, 95, 0.8) 20%, rgba(30, 58, 82, 0.6) 45%, rgba(26, 47, 82, 0.4) 65%, transparent 85%),
-        radial-gradient(ellipse at 75% 40%, var(--ocean-twilight) 0%, rgba(30, 58, 82, 0.9) 15%, rgba(44, 79, 107, 0.7) 35%, rgba(26, 47, 82, 0.5) 55%, transparent 75%),
-        radial-gradient(ellipse at 25% 85%, var(--deep-azure) 0%, rgba(44, 79, 107, 0.8) 20%, rgba(30, 58, 82, 0.6) 40%, rgba(26, 47, 82, 0.4) 60%, transparent 80%),
-        radial-gradient(ellipse at 60% 60%, var(--ocean-mystery) 0%, rgba(26, 46, 69, 0.7) 25%, rgba(42, 63, 95, 0.5) 50%, transparent 75%),
-        radial-gradient(ellipse at 30% 40%, var(--abyssal-blue) 0%, rgba(13, 25, 41, 0.9) 30%, rgba(26, 46, 69, 0.6) 60%, transparent 90%),
-        radial-gradient(ellipse at 80% 80%, var(--deep-teal) 0%, rgba(26, 59, 74, 0.8) 25%, rgba(42, 77, 107, 0.5) 50%, transparent 75%),
-        radial-gradient(ellipse at 20% 20%, var(--ocean-emerald) 0%, rgba(42, 77, 58, 0.7) 30%, rgba(26, 59, 74, 0.4) 60%, transparent 85%),
-        radial-gradient(ellipse at 90% 30%, var(--deep-sapphire) 0%, rgba(26, 47, 77, 0.8) 20%, rgba(45, 74, 107, 0.6) 45%, transparent 70%),
-        /* 基本グラデーション */
-        linear-gradient(135deg, 
-            var(--deep-ocean-dark) 0%, 
-            var(--ocean-abyss) 8%, 
-            var(--deep-current) 16%, 
-            var(--ocean-twilight) 24%, 
-            var(--deep-azure) 32%, 
-            var(--ocean-mystery) 40%, 
-            var(--abyssal-blue) 48%, 
-            var(--deep-teal) 56%, 
-            var(--ocean-emerald) 64%, 
-            var(--deep-sapphire) 72%, 
-            var(--twilight-blue) 80%, 
-            var(--abyss-green) 88%,
-            var(--deep-ocean-dark) 100%
-        );
-    animation: dynamicOceanWaves 18s ease-in-out infinite;
-    z-index: 0;
-    will-change: transform, opacity, background-position;
-}
-
-/* 深海の流れエフェクト */
-.hero::after {
     content: '';
     position: absolute;
     top: -10%;
@@ -698,13 +511,37 @@ main {
     right: -10%;
     bottom: -10%;
     background: 
-        /* より濃い深海エフェクト */
-        radial-gradient(circle at 60% 40%, rgba(13, 25, 41, 0.9) 0%, rgba(26, 46, 69, 0.7) 20%, rgba(42, 63, 95, 0.5) 40%, rgba(30, 58, 82, 0.3) 60%, transparent 80%),
-        radial-gradient(circle at 20% 80%, rgba(26, 59, 74, 0.8) 0%, rgba(42, 77, 107, 0.6) 15%, rgba(26, 47, 77, 0.4) 35%, rgba(45, 74, 107, 0.2) 55%, transparent 75%),
-        radial-gradient(circle at 90% 20%, rgba(10, 15, 26, 0.9) 0%, rgba(26, 35, 50, 0.7) 25%, rgba(42, 63, 95, 0.5) 45%, rgba(30, 58, 82, 0.3) 65%, transparent 85%),
-        radial-gradient(circle at 40% 90%, rgba(26, 46, 69, 0.8) 0%, rgba(42, 77, 58, 0.6) 20%, rgba(26, 59, 74, 0.4) 45%, transparent 70%),
-        radial-gradient(circle at 80% 10%, rgba(42, 77, 107, 0.7) 0%, rgba(26, 47, 77, 0.5) 30%, rgba(45, 74, 107, 0.3) 60%, transparent 80%);
-    animation: deepAbyssalFlow 15s ease-in-out infinite;
+        radial-gradient(ellipse at 20% 30%, var(--deep-ocean-dark) 0%, rgba(26, 35, 50, 0.6) 40%, transparent 70%),
+        radial-gradient(ellipse at 70% 70%, var(--ocean-abyss) 0%, rgba(30, 58, 82, 0.5) 35%, transparent 65%),
+        radial-gradient(ellipse at 50% 20%, var(--deep-current) 0%, rgba(42, 63, 95, 0.4) 50%, transparent 80%),
+        radial-gradient(ellipse at 80% 40%, var(--ocean-twilight) 0%, rgba(44, 79, 107, 0.3) 45%, transparent 75%),
+        radial-gradient(ellipse at 30% 80%, var(--deep-azure) 0%, rgba(26, 47, 82, 0.4) 40%, transparent 70%),
+        linear-gradient(135deg, 
+            var(--deep-ocean-dark) 0%, 
+            var(--ocean-abyss) 20%, 
+            var(--deep-current) 40%, 
+            var(--ocean-twilight) 60%, 
+            var(--deep-azure) 80%, 
+            var(--deep-ocean-dark) 100%
+        );
+    animation: gentleRipples 25s ease-in-out infinite;
+    z-index: 0;
+    will-change: transform, opacity;
+}
+
+/* 深海の穏やかな流れエフェクト */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    right: -5%;
+    bottom: -5%;
+    background: 
+        radial-gradient(circle at 40% 60%, rgba(26, 46, 69, 0.4) 0%, rgba(42, 63, 95, 0.2) 50%, transparent 80%),
+        radial-gradient(circle at 80% 30%, rgba(30, 58, 82, 0.3) 0%, rgba(26, 47, 77, 0.15) 45%, transparent 75%),
+        radial-gradient(circle at 10% 80%, rgba(44, 79, 107, 0.35) 0%, rgba(26, 59, 74, 0.2) 40%, transparent 70%);
+    animation: deepSeaGentle 20s ease-in-out infinite;
     z-index: 1;
     will-change: transform, opacity, filter;
 }
@@ -719,159 +556,89 @@ main {
 .hero-content::before {
     content: '';
     position: absolute;
-    top: -300px;
-    left: -300px;
-    right: -300px;
-    bottom: -300px;
-    background: 
-        /* きらめく海面エフェクト */
-        linear-gradient(45deg, transparent 20%, rgba(176, 190, 197, 0.25) 35%, rgba(135, 152, 163, 0.15) 50%, rgba(84, 110, 122, 0.1) 65%, transparent 80%),
-        linear-gradient(-45deg, transparent 30%, rgba(84, 110, 122, 0.2) 45%, rgba(135, 152, 163, 0.12) 60%, rgba(176, 190, 197, 0.08) 75%, transparent 90%),
-        linear-gradient(90deg, transparent 25%, rgba(176, 190, 197, 0.18) 40%, rgba(135, 152, 163, 0.1) 55%, transparent 70%),
-        radial-gradient(ellipse at 30% 70%, rgba(135, 152, 163, 0.3) 0%, rgba(176, 190, 197, 0.15) 30%, rgba(84, 110, 122, 0.08) 50%, transparent 70%),
-        radial-gradient(ellipse at 80% 30%, rgba(84, 110, 122, 0.25) 0%, rgba(135, 152, 163, 0.12) 35%, rgba(176, 190, 197, 0.06) 60%, transparent 80%);
-    animation: shimmeringSurfaceWaves 20s ease-in-out infinite;
-    z-index: -1;
-    pointer-events: none;
-    will-change: transform, opacity, filter;
-}
-
-/* 追加の光の粒子エフェクト */
-.hero-content::after {
-    content: '';
-    position: absolute;
     top: -200px;
     left: -200px;
     right: -200px;
     bottom: -200px;
     background: 
-        radial-gradient(circle at 25% 25%, rgba(176, 190, 197, 0.4) 0%, rgba(176, 190, 197, 0.2) 1%, transparent 2%),
-        radial-gradient(circle at 75% 35%, rgba(135, 152, 163, 0.3) 0%, rgba(135, 152, 163, 0.15) 1%, transparent 2%),
-        radial-gradient(circle at 45% 70%, rgba(84, 110, 122, 0.35) 0%, rgba(84, 110, 122, 0.2) 1%, transparent 2%),
-        radial-gradient(circle at 85% 80%, rgba(176, 190, 197, 0.3) 0%, rgba(176, 190, 197, 0.15) 1%, transparent 2%),
-        radial-gradient(circle at 15% 60%, rgba(135, 152, 163, 0.25) 0%, rgba(135, 152, 163, 0.12) 1%, transparent 2%);
-    animation: shimmerParticles 12s ease-in-out infinite;
+        linear-gradient(45deg, transparent 40%, rgba(176, 190, 197, 0.15) 50%, transparent 60%),
+        linear-gradient(-45deg, transparent 35%, rgba(135, 152, 163, 0.12) 55%, transparent 65%),
+        radial-gradient(ellipse at 30% 70%, rgba(84, 110, 122, 0.1) 0%, transparent 50%);
+    animation: surfaceShimmer 18s ease-in-out infinite;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.8;
+    will-change: transform, opacity, filter;
 }
 
-/* 強調されたヒーロータイトル */
+/* 控えめなヒーロータイトル */
 .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: 3.8rem;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 16px;
     position: relative;
     display: inline-block;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     
-    /* より強い白色 */
-    color: #ffffff;
+    /* 控えめな白色 */
+    color: rgba(255, 255, 255, 0.95);
     
-    /* 多層の影効果で深みと立体感を演出 */
+    /* 上品な影効果 */
     text-shadow: 
-        /* 基本の影 */
-        3px 3px 6px rgba(0, 0, 0, 0.8),
-        /* 深い影 */
-        6px 6px 12px rgba(0, 0, 0, 0.6),
-        /* 遠景の影 */
-        9px 9px 18px rgba(0, 0, 0, 0.4),
-        /* 光彩効果 */
-        0 0 30px rgba(176, 190, 197, 0.6),
-        0 0 60px rgba(135, 152, 163, 0.4),
-        0 0 90px rgba(84, 110, 122, 0.3),
-        /* 細い輪郭線効果 */
-        -1px -1px 0 rgba(26, 31, 46, 0.8),
-        1px -1px 0 rgba(26, 31, 46, 0.8),
-        -1px 1px 0 rgba(26, 31, 46, 0.8),
-        1px 1px 0 rgba(26, 31, 46, 0.8);
+        2px 2px 4px rgba(0, 0, 0, 0.7),
+        0 0 15px rgba(176, 190, 197, 0.4),
+        -1px -1px 0 rgba(26, 31, 46, 0.6),
+        1px -1px 0 rgba(26, 31, 46, 0.6),
+        -1px 1px 0 rgba(26, 31, 46, 0.6),
+        1px 1px 0 rgba(26, 31, 46, 0.6);
     
-    /* 背景装飾 - 控えめな光る板 */
-    background: 
-        linear-gradient(135deg, 
-            rgba(176, 190, 197, 0.08) 0%, 
-            rgba(135, 152, 163, 0.05) 50%, 
-            rgba(84, 110, 122, 0.08) 100%
-        );
-    
-    /* 内側の影で彫り込み効果 */
-    box-shadow: 
-        inset 0 2px 4px rgba(255, 255, 255, 0.1),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
-    
-    padding: 12px 24px;
-    border-radius: 8px;
-    border: 1px solid rgba(176, 190, 197, 0.2);
-    
-    /* 微細な光るアニメーション */
-    animation: subtleGlow 4s ease-in-out infinite;
+    /* 控えめなアニメーション */
+    animation: gentleGlow 6s ease-in-out infinite;
 }
 
-/* タイトル下線の強化 */
+/* タイトル下線 */
 .hero-title::after {
     content: '';
     position: absolute;
-    bottom: -12px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
-    height: 3px;
+    height: 2px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(176, 190, 197, 0.8) 20%, 
-        rgba(255, 255, 255, 0.9) 50%, 
-        rgba(176, 190, 197, 0.8) 80%, 
+        rgba(176, 190, 197, 0.6) 30%, 
+        rgba(255, 255, 255, 0.7) 50%, 
+        rgba(176, 190, 197, 0.6) 70%, 
         transparent 100%
     );
-    border-radius: 2px;
-    box-shadow: 
-        0 0 8px rgba(176, 190, 197, 0.6),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    animation: understatedGrow 2.5s ease-out forwards, 
-               lineGlow 3s ease-in-out infinite 1s;
-    animation-delay: 1s, 3.5s;
+    border-radius: 1px;
+    animation: understatedGrow 2.5s ease-out forwards;
+    animation-delay: 1s;
 }
 
-/* 強調されたサブタイトル */
+/* 控えめなサブタイトル */
 .hero-subtitle {
     font-size: 1.4rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    margin-top: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 8px;
     position: relative;
     
-    /* より強い色 */
-    color: rgba(255, 255, 255, 0.95);
+    /* 控えめな色 */
+    color: rgba(255, 255, 255, 0.85);
     
-    /* 多層の影効果 */
+    /* 上品な影効果 */
     text-shadow: 
-        /* 基本の影 */
-        2px 2px 4px rgba(0, 0, 0, 0.8),
-        /* 深い影 */
-        4px 4px 8px rgba(0, 0, 0, 0.6),
-        /* 光彩効果 */
-        0 0 20px rgba(176, 190, 197, 0.5),
-        0 0 40px rgba(135, 152, 163, 0.3),
-        /* 輪郭線効果 */
-        -1px -1px 0 rgba(26, 31, 46, 0.7),
-        1px -1px 0 rgba(26, 31, 46, 0.7),
-        -1px 1px 0 rgba(26, 31, 46, 0.7),
-        1px 1px 0 rgba(26, 31, 46, 0.7);
-    
-    /* 控えめな背景装飾 */
-    background: rgba(84, 110, 122, 0.06);
-    padding: 8px 20px;
-    border-radius: 6px;
-    border: 1px solid rgba(135, 152, 163, 0.15);
-    
-    /* 内側の影 */
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.1),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+        1px 1px 2px rgba(0, 0, 0, 0.6),
+        0 0 8px rgba(135, 152, 163, 0.3),
+        -1px -1px 0 rgba(26, 31, 46, 0.4),
+        1px -1px 0 rgba(26, 31, 46, 0.4),
+        -1px 1px 0 rgba(26, 31, 46, 0.4),
+        1px 1px 0 rgba(26, 31, 46, 0.4);
     
     animation: subtleFadeIn 1.2s ease-out 0.4s both,
-               subtitleGlow 6s ease-in-out infinite 3s;
+               subtleSubtitleGlow 8s ease-in-out infinite 2s;
 }
 
 /* 重厚なセクション */
@@ -1278,7 +1045,7 @@ main {
     animation: quietFloat 8s ease-in-out infinite;
 }
 
-/* 宅録環境 */
+/* サウンドハウスリンク付き宅録環境 */
 .setup-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1370,6 +1137,70 @@ main {
 .equipment-items {
     display: table-cell;
     line-height: 1.7;
+}
+
+/* サウンドハウスリンクのスタイル */
+.soundhouse-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--soundhouse-orange);
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-left: 8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    background: rgba(255, 102, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.soundhouse-link:hover {
+    background: rgba(255, 102, 0, 0.1);
+    border-color: rgba(255, 102, 0, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+}
+
+.soundhouse-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.soundhouse-link:hover::before {
+    left: 100%;
+}
+
+.soundhouse-link .link-icon {
+    margin-right: 4px;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.soundhouse-link .link-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* 機材リストのアイテムとリンクのレイアウト */
+.equipment-item-with-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.equipment-item-name {
+    flex: 1;
+    color: var(--text-secondary);
 }
 
 /* 特別装飾のsetup-note（前バージョンの装飾を適用） */
@@ -1577,14 +1408,12 @@ main {
 @media (max-width: 1024px) {
     .hero-title {
         font-size: 3rem;
-        letter-spacing: 2px;
-        padding: 10px 20px;
+        letter-spacing: 1.5px;
     }
     
     .hero-subtitle {
         font-size: 1.3rem;
-        letter-spacing: 1.5px;
-        padding: 6px 16px;
+        letter-spacing: 0.8px;
     }
     
     .works-categories {
@@ -1645,47 +1474,25 @@ main {
     }
     
     .hero::before {
-        animation: dynamicOceanWaves 15s ease-in-out infinite;
+        animation: gentleRipples 20s ease-in-out infinite;
     }
     
     .hero::after {
-        animation: deepAbyssalFlow 12s ease-in-out infinite;
+        animation: deepSeaGentle 16s ease-in-out infinite;
     }
     
     .hero-content::before {
-        animation: shimmeringSurfaceWaves 16s ease-in-out infinite;
+        animation: surfaceShimmer 14s ease-in-out infinite;
     }
     
     .hero-title {
         font-size: 2.4rem;
-        letter-spacing: 1.5px;
-        padding: 8px 16px;
-        text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.8),
-            4px 4px 8px rgba(0, 0, 0, 0.6),
-            6px 6px 12px rgba(0, 0, 0, 0.4),
-            0 0 20px rgba(176, 190, 197, 0.6),
-            0 0 40px rgba(135, 152, 163, 0.4),
-            0 0 60px rgba(84, 110, 122, 0.3),
-            -1px -1px 0 rgba(26, 31, 46, 0.8),
-            1px -1px 0 rgba(26, 31, 46, 0.8),
-            -1px 1px 0 rgba(26, 31, 46, 0.8),
-            1px 1px 0 rgba(26, 31, 46, 0.8);
+        letter-spacing: 1px;
     }
     
     .hero-subtitle {
         font-size: 1.2rem;
-        letter-spacing: 1px;
-        padding: 6px 14px;
-        text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.8),
-            3px 3px 6px rgba(0, 0, 0, 0.6),
-            0 0 15px rgba(176, 190, 197, 0.5),
-            0 0 30px rgba(135, 152, 163, 0.3),
-            -1px -1px 0 rgba(26, 31, 46, 0.7),
-            1px -1px 0 rgba(26, 31, 46, 0.7),
-            -1px 1px 0 rgba(26, 31, 46, 0.7),
-            1px 1px 0 rgba(26, 31, 46, 0.7);
+        letter-spacing: 0.5px;
     }
     
     /* セクション */
@@ -1726,6 +1533,19 @@ main {
         padding-left: 20px;
     }
     
+    /* サウンドハウスリンクのモバイル対応 */
+    .soundhouse-link {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        margin-left: 6px;
+    }
+    
+    .equipment-item-with-link {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
     /* お問い合わせ */
     .contact-form {
         padding: 32px 24px;
@@ -1752,35 +1572,24 @@ main {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
-        letter-spacing: 1px;
-        padding: 6px 12px;
-        text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.8),
-            3px 3px 6px rgba(0, 0, 0, 0.6),
-            0 0 15px rgba(176, 190, 197, 0.6),
-            0 0 30px rgba(135, 152, 163, 0.4),
-            -1px -1px 0 rgba(26, 31, 46, 0.8),
-            1px -1px 0 rgba(26, 31, 46, 0.8),
-            -1px 1px 0 rgba(26, 31, 46, 0.8),
-            1px 1px 0 rgba(26, 31, 46, 0.8);
+        letter-spacing: 0.5px;
     }
     
     .hero-subtitle {
         font-size: 1.1rem;
-        letter-spacing: 0.5px;
-        padding: 5px 12px;
+        letter-spacing: 0.3px;
     }
     
     .hero::before {
-        animation: dynamicOceanWaves 12s ease-in-out infinite;
+        animation: gentleRipples 16s ease-in-out infinite;
     }
     
     .hero::after {
-        animation: deepAbyssalFlow 10s ease-in-out infinite;
+        animation: deepSeaGentle 12s ease-in-out infinite;
     }
     
     .hero-content::before {
-        animation: shimmeringSurfaceWaves 14s ease-in-out infinite;
+        animation: surfaceShimmer 12s ease-in-out infinite;
     }
     
     .section-title {
@@ -1833,6 +1642,13 @@ main {
     
     .setup-note {
         padding: 32px;
+    }
+    
+    /* サウンドハウスリンクの小画面対応 */
+    .soundhouse-link {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        margin-left: 4px;
     }
     
     /* 上に戻るボタン（小画面） */

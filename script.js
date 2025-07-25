@@ -389,4 +389,27 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         });
     });
+
+    // サウンドハウスリンクのホバーエフェクト強化
+    const soundhouseLinks = document.querySelectorAll('.soundhouse-link');
+    soundhouseLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            // ホバー時の追加エフェクト
+            link.style.transform = 'translateY(-1px) scale(1.02)';
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            // ホバー解除時のリセット
+            link.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // クリック時のフィードバック
+        link.addEventListener('mousedown', () => {
+            link.style.transform = 'translateY(0) scale(0.98)';
+        });
+        
+        link.addEventListener('mouseup', () => {
+            link.style.transform = 'translateY(-1px) scale(1.02)';
+        });
+    });
 });
