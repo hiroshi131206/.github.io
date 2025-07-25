@@ -421,14 +421,14 @@ main {
 }
 
 .profile-table tr:hover {
-    background: rgba(84, 110, 122, 0.02);
+    background: rgba(84, 110, 122, 0.06);
 }
 
 .profile-table th {
     width: 30%;
     font-weight: 600;
     color: var(--text-primary);
-    background: rgba(84, 110, 122, 0.04);
+    background: rgba(84, 110, 122, 0.08);
 }
 
 .profile-table td {
@@ -471,12 +471,12 @@ main {
             to bottom,
             transparent,
             transparent calc(2em - 1px),
-            rgba(84, 110, 122, 0.12) calc(2em - 1px),
-            rgba(84, 110, 122, 0.12) 2em
+            rgba(84, 110, 122, 0.18) calc(2em - 1px),
+            rgba(84, 110, 122, 0.18) 2em
         );
     background-size: 100% 2em;
-    background-position: 0 2em;
-    padding-top: 0.5em;
+    background-position: 0 1em;
+    padding-top: 1em;
 }
 
 /* 落ち着いたボイスサンプル */
@@ -629,7 +629,7 @@ main {
 }
 
 .works-list li:hover {
-    background: rgba(84, 110, 122, 0.02);
+    background: rgba(84, 110, 122, 0.06);
     padding-left: 8px;
     border-radius: 4px;
 }
@@ -680,7 +680,7 @@ main {
 }
 
 .notes-list li:hover {
-    background: rgba(84, 110, 122, 0.02);
+    background: rgba(84, 110, 122, 0.06);
     padding-left: 36px;
     border-radius: 4px;
 }
@@ -1086,15 +1086,15 @@ main {
     .profile-description p {
         line-height: 1.8em;
         background-size: 100% 1.8em;
-        background-position: 0 1.8em;
-        padding-top: 0.4em;
+        background-position: 0 0.9em;
+        padding-top: 0.9em;
         background-image: 
             repeating-linear-gradient(
                 to bottom,
                 transparent,
                 transparent calc(1.8em - 1px),
-                rgba(84, 110, 122, 0.12) calc(1.8em - 1px),
-                rgba(84, 110, 122, 0.12) 1.8em
+                rgba(84, 110, 122, 0.18) calc(1.8em - 1px),
+                rgba(84, 110, 122, 0.18) 1.8em
             );
     }
     
