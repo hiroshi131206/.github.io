@@ -94,31 +94,64 @@ body {
     }
 }
 
-/* 海の波のアニメーション */
-@keyframes oceanWave1 {
+/* 海の波のアニメーション（俯瞰視点） */
+@keyframes oceanRipple1 {
     0% {
-        transform: translateX(-100%) translateZ(0);
+        transform: scale(0.8) translateX(-50px) translateY(-30px);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1.2) translateX(30px) translateY(20px);
+        opacity: 0.2;
     }
     100% {
-        transform: translateX(100%) translateZ(0);
+        transform: scale(1.5) translateX(80px) translateY(50px);
+        opacity: 0;
     }
 }
 
-@keyframes oceanWave2 {
+@keyframes oceanRipple2 {
     0% {
-        transform: translateX(-100%) translateZ(0);
+        transform: scale(0.6) translateX(60px) translateY(40px);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.1) translateX(-20px) translateY(-10px);
+        opacity: 0.15;
     }
     100% {
-        transform: translateX(100%) translateZ(0);
+        transform: scale(1.8) translateX(-90px) translateY(-60px);
+        opacity: 0;
     }
 }
 
-@keyframes oceanWave3 {
+@keyframes oceanRipple3 {
     0% {
-        transform: translateX(-100%) translateZ(0);
+        transform: scale(1) translateX(20px) translateY(-40px);
+        opacity: 0.25;
+    }
+    50% {
+        transform: scale(1.4) translateX(-40px) translateY(10px);
+        opacity: 0.1;
     }
     100% {
-        transform: translateX(100%) translateZ(0);
+        transform: scale(2) translateX(-100px) translateY(70px);
+        opacity: 0;
+    }
+}
+
+@keyframes oceanFlow {
+    0% {
+        transform: translateX(-100px) translateY(-50px) rotate(0deg);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateX(50px) translateY(30px) rotate(5deg);
+        opacity: 0.35;
+    }
+    100% {
+        transform: translateX(200px) translateY(80px) rotate(10deg);
+        opacity: 0.1;
     }
 }
 
@@ -356,75 +389,100 @@ main {
     animation: deepSeaFlow 15s ease-in-out infinite;
 }
 
-/* 海の波レイヤー */
-.hero::after {
-    content: '';
+/* 海の俯瞰視点オーバーレイ */
+.hero-ocean {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 200%;
-    height: 100px;
-    background: 
-        linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(84, 110, 122, 0.08) 25%, 
-            rgba(176, 190, 197, 0.06) 50%, 
-            rgba(84, 110, 122, 0.08) 75%, 
-            transparent 100%
-        );
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    animation: oceanWave1 20s linear infinite;
-    z-index: 1;
-}
-
-/* 追加の波レイヤー */
-.hero-waves {
-    position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 100%;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none;
 }
 
-.hero-waves::before {
+/* 海の波紋レイヤー */
+.hero-ocean::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 300%;
-    height: 80px;
+    top: 20%;
+    left: 10%;
+    width: 300px;
+    height: 150px;
     background: 
-        linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(176, 190, 197, 0.04) 20%, 
-            rgba(84, 110, 122, 0.06) 40%, 
-            rgba(176, 190, 197, 0.04) 60%, 
-            rgba(84, 110, 122, 0.06) 80%, 
-            transparent 100%
+        radial-gradient(ellipse, 
+            rgba(84, 110, 122, 0.15) 0%, 
+            rgba(84, 110, 122, 0.08) 40%, 
+            transparent 70%
         );
-    border-radius: 60% 40% 0 0 / 100% 100% 0 0;
-    animation: oceanWave2 25s linear infinite reverse;
+    border-radius: 50%;
+    animation: oceanRipple1 25s ease-in-out infinite;
 }
 
-.hero-waves::after {
+.hero-ocean::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 250%;
-    height: 60px;
+    top: 60%;
+    right: 15%;
+    width: 250px;
+    height: 120px;
     background: 
-        linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(135, 152, 163, 0.03) 30%, 
+        radial-gradient(ellipse, 
+            rgba(176, 190, 197, 0.12) 0%, 
+            rgba(84, 110, 122, 0.06) 45%, 
+            transparent 75%
+        );
+    border-radius: 50%;
+    animation: oceanRipple2 30s ease-in-out infinite 5s;
+}
+
+/* 追加の波紋エフェクト */
+.ocean-ripple-1 {
+    position: absolute;
+    top: 40%;
+    right: 25%;
+    width: 200px;
+    height: 100px;
+    background: 
+        radial-gradient(ellipse, 
+            rgba(135, 152, 163, 0.1) 0%, 
             rgba(84, 110, 122, 0.05) 50%, 
-            rgba(135, 152, 163, 0.03) 70%, 
-            transparent 100%
+            transparent 80%
         );
-    border-radius: 40% 60% 0 0 / 100% 100% 0 0;
-    animation: oceanWave3 30s linear infinite;
+    border-radius: 50%;
+    animation: oceanRipple3 35s ease-in-out infinite 10s;
+}
+
+.ocean-ripple-2 {
+    position: absolute;
+    top: 15%;
+    right: 40%;
+    width: 180px;
+    height: 90px;
+    background: 
+        radial-gradient(ellipse, 
+            rgba(84, 110, 122, 0.08) 0%, 
+            rgba(176, 190, 197, 0.04) 55%, 
+            transparent 85%
+        );
+    border-radius: 50%;
+    animation: oceanFlow 28s ease-in-out infinite 8s;
+}
+
+.ocean-ripple-3 {
+    position: absolute;
+    bottom: 25%;
+    left: 20%;
+    width: 220px;
+    height: 110px;
+    background: 
+        radial-gradient(ellipse, 
+            rgba(176, 190, 197, 0.09) 0%, 
+            rgba(84, 110, 122, 0.05) 50%, 
+            transparent 75%
+        );
+    border-radius: 50%;
+    animation: oceanRipple1 32s ease-in-out infinite 15s;
 }
 
 .hero-content {
@@ -1203,28 +1261,30 @@ main {
         min-height: 55vh;
     }
     
-    .hero::after {
-        height: 60px;
-    }
-    
-    .hero-waves {
-        height: 80px;
-    }
-    
-    .hero-waves::before {
-        height: 50px;
-    }
-    
-    .hero-waves::after {
-        height: 40px;
-    }
-    
     .hero-title {
         font-size: 2.4rem;
     }
     
     .hero-subtitle {
         font-size: 1.2rem;
+    }
+    
+    /* 海のアニメーション（タブレット調整） */
+    .hero-ocean::before {
+        width: 250px;
+        height: 125px;
+    }
+    
+    .hero-ocean::after {
+        width: 200px;
+        height: 100px;
+    }
+    
+    .ocean-ripple-1,
+    .ocean-ripple-2,
+    .ocean-ripple-3 {
+        width: 160px;
+        height: 80px;
     }
     
     /* セクション */
@@ -1293,20 +1353,22 @@ main {
         font-size: 2rem;
     }
     
-    .hero::after {
-        height: 40px;
+    /* 海のアニメーション（スマートフォン調整） */
+    .hero-ocean::before {
+        width: 180px;
+        height: 90px;
     }
     
-    .hero-waves {
+    .hero-ocean::after {
+        width: 150px;
+        height: 75px;
+    }
+    
+    .ocean-ripple-1,
+    .ocean-ripple-2,
+    .ocean-ripple-3 {
+        width: 120px;
         height: 60px;
-    }
-    
-    .hero-waves::before {
-        height: 35px;
-    }
-    
-    .hero-waves::after {
-        height: 25px;
     }
     
     .section-title {
