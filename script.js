@@ -412,12 +412,12 @@ document.addEventListener('DOMContentLoaded', () => {
             link.style.transform = 'translateY(-1px) scale(1.02)';
         });
         
-        // 船舵アイコンの回転エフェクト強化
+        // 羅針盤アイコンの回転エフェクト強化
         const linkArrow = link.querySelector('.link-arrow');
         if (linkArrow) {
             link.addEventListener('mouseenter', () => {
-                // 船舵の回転とグロー効果
-                linkArrow.style.transform = 'rotate(90deg)';
+                // 羅針盤の回転とグロー効果
+                linkArrow.style.transform = 'rotate(45deg)';
                 linkArrow.style.textShadow = '0 0 8px rgba(255, 102, 0, 0.8)';
             });
             
@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // 海上自衛隊テーマのための追加インタラクション
-    // 錨アイコン（上に戻るボタン）の特別な動作
+    // 錨アイコン（上に戻るボタン）と舵輪・羅針盤の統一感
     const anchorButton = scrollToTopButton;
     if (anchorButton) {
         // マウスオーバー時の海の波のような効果

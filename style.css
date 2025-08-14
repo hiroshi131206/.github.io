@@ -1037,7 +1037,7 @@ main {
 }
 
 .notes-list li:before {
-    content: "⚓";
+    content: "⚲";
     position: absolute;
     left: 0;
     color: var(--steel-gray);
@@ -1181,7 +1181,7 @@ main {
     left: 100%;
 }
 
-/* 船舵（舵輪）デザインのリンクアイコン */
+/* 羅針盤デザインのリンクアイコン */
 .soundhouse-link .link-arrow {
     position: relative;
     z-index: 1;
@@ -1193,14 +1193,15 @@ main {
 }
 
 .soundhouse-link .link-arrow::before {
-    content: "⚲";
+    content: "🧭";
     display: block;
+    font-size: 0.7rem;
     transform: rotate(0deg);
     transition: transform 0.3s ease;
 }
 
 .soundhouse-link:hover .link-arrow::before {
-    transform: rotate(90deg);
+    transform: rotate(45deg);
     text-shadow: 0 0 4px rgba(255, 102, 0, 0.6);
 }
 
