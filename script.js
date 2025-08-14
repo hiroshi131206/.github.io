@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 wrapper.addEventListener('mouseleave', resetOverlay);
             }
             
-            // YouTube動画の場合、より積極的な制御を試行
+            // YouTubeの動画の場合、より積極的な制御を試行
             if (iframe.src.includes('youtube.com') || iframe.src.includes('youtu.be')) {
                 this.setupYouTubeControl(iframe);
             }
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // サウンドハウスリンクのホバーエフェクト強化
+    // サウンドハウスリンクのホバーエフェクト強化（海上自衛隊テーマ対応）
     const soundhouseLinks = document.querySelectorAll('.soundhouse-link');
     soundhouseLinks.forEach(link => {
         link.addEventListener('mouseenter', () => {
@@ -410,6 +410,64 @@ document.addEventListener('DOMContentLoaded', () => {
         
         link.addEventListener('mouseup', () => {
             link.style.transform = 'translateY(-1px) scale(1.02)';
+        });
+        
+        // 船舵アイコンの回転エフェクト強化
+        const linkArrow = link.querySelector('.link-arrow');
+        if (linkArrow) {
+            link.addEventListener('mouseenter', () => {
+                // 船舵の回転とグロー効果
+                linkArrow.style.transform = 'rotate(90deg)';
+                linkArrow.style.textShadow = '0 0 8px rgba(255, 102, 0, 0.8)';
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                // 元の状態に戻す
+                linkArrow.style.transform = 'rotate(0deg)';
+                linkArrow.style.textShadow = 'none';
+            });
+        }
+    });
+    
+    // 海上自衛隊テーマのための追加インタラクション
+    // 錨アイコン（上に戻るボタン）の特別な動作
+    const anchorButton = scrollToTopButton;
+    if (anchorButton) {
+        // マウスオーバー時の海の波のような効果
+        anchorButton.addEventListener('mouseenter', () => {
+            anchorButton.style.boxShadow = '0 8px 25px rgba(84, 110, 122, 0.4), 0 0 20px rgba(176, 190, 197, 0.3)';
+        });
+        
+        anchorButton.addEventListener('mouseleave', () => {
+            anchorButton.style.boxShadow = '';
+        });
+        
+        // クリック時の特別なエフェクト
+        anchorButton.addEventListener('click', () => {
+            // 一時的に海の色に変更
+            anchorButton.style.background = 'linear-gradient(135deg, #1a3b4a, #2c4f6b)';
+            anchorButton.style.borderColor = '#546e7a';
+            
+            // 元に戻す
+            setTimeout(() => {
+                anchorButton.style.background = '';
+                anchorButton.style.borderColor = '';
+            }, 1000);
+        });
+    }
+    
+    // セクション間のナビゲーションエフェクト強化
+    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // クリック時の海軍風エフェクト
+            link.style.color = '#8798a3';
+            link.style.textShadow = '0 0 10px rgba(135, 152, 163, 0.6)';
+            
+            setTimeout(() => {
+                link.style.color = '';
+                link.style.textShadow = '';
+            }, 300);
         });
     });
 });
