@@ -835,7 +835,7 @@ main {
 
 /* オーディオドラマ用の横幅2カラム分 */
 .sample-item-wide {
-    grid-column: 1 / -1;
+    grid-column: span 2;
 }
 
 .sample-item h3 {
@@ -1045,8 +1045,7 @@ main {
     content: '';
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0.5em;
     width: 16px;
     height: 16px;
     background-image: url('https://gist.githubusercontent.com/hiroshi131206/2328d243652843d9c78f69cc8ff3f58c/raw/helm.svg');
@@ -1584,6 +1583,11 @@ main {
     .video-grid {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+    
+    /* モバイルではフルワイド指定を解除 */
+    .sample-item-wide {
+        grid-column: unset;
     }
     
     /* 宅録環境 */
