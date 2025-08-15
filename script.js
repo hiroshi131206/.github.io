@@ -412,12 +412,12 @@ document.addEventListener('DOMContentLoaded', () => {
             link.style.transform = 'translateY(-1px) scale(1.02)';
         });
         
-        // 羅針盤アイコンの回転エフェクト強化
+        // 羅針盤アイコンの一回転エフェクト強化
         const linkArrow = link.querySelector('.link-arrow');
         if (linkArrow) {
             link.addEventListener('mouseenter', () => {
-                // 羅針盤の回転エフェクト（CSSで制御）
-                linkArrow.style.transform = 'rotate(45deg)';
+                // 羅針盤の一回転エフェクト（CSSで制御）
+                linkArrow.style.transform = 'rotate(360deg)';
             });
             
             link.addEventListener('mouseleave', () => {

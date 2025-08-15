@@ -1145,47 +1145,25 @@ main {
     line-height: 1.7;
 }
 
-/* サウンドハウスリンクのスタイル（海上自衛隊テーマ版） */
+/* サウンドハウスリンクのスタイル（海上自衛隊テーマ版・枠なし） */
 .soundhouse-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: var(--soundhouse-orange);
-    font-weight: 600;
-    font-size: 0.9rem;
     margin-left: 8px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 102, 0, 0.4);
-    background: rgba(255, 102, 0, 0.08);
+    width: 20px;
+    height: 20px;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .soundhouse-link:hover {
-    background: rgba(255, 102, 0, 0.15);
-    border-color: rgba(255, 102, 0, 0.7);
     transform: translateY(-2px) scale(1.1);
-    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
 }
 
-.soundhouse-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.4s ease;
-}
 
-.soundhouse-link:hover::before {
-    left: 100%;
-}
 
 /* 羅針盤デザインのリンクアイコン */
 .soundhouse-link .link-arrow {
@@ -1195,25 +1173,25 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
 }
 
 .soundhouse-link .link-arrow::before {
     content: '';
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     background-image: url('https://gist.githubusercontent.com/hiroshi131206/31431b93fe9ffe3bac7af17409ad6d9e/raw/compass.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     transform: rotate(0deg);
-    transition: transform 0.3s ease;
+    transition: transform 0.6s ease;
 }
 
 .soundhouse-link:hover .link-arrow::before {
-    transform: rotate(45deg);
+    transform: rotate(360deg);
     filter: brightness(1.2) contrast(1.1);
 }
 
@@ -1615,14 +1593,19 @@ main {
     
     /* サウンドハウスリンクのモバイル対応 */
     .soundhouse-link {
-        width: 20px;
-        height: 20px;
-        font-size: 0.8rem;
+        width: 16px;
+        height: 16px;
         margin-left: 6px;
     }
     
     .soundhouse-link .link-arrow {
-        font-size: 0.8rem;
+        width: 16px;
+        height: 16px;
+    }
+    
+    .soundhouse-link .link-arrow::before {
+        width: 16px;
+        height: 16px;
     }
     
     .equipment-item-with-link {
@@ -1731,14 +1714,19 @@ main {
     
     /* サウンドハウスリンクの小画面対応 */
     .soundhouse-link {
-        width: 18px;
-        height: 18px;
-        font-size: 0.75rem;
+        width: 14px;
+        height: 14px;
         margin-left: 4px;
     }
     
     .soundhouse-link .link-arrow {
-        font-size: 0.7rem;
+        width: 14px;
+        height: 14px;
+    }
+    
+    .soundhouse-link .link-arrow::before {
+        width: 14px;
+        height: 14px;
     }
     
     /* 上に戻るボタン（小画面） */
