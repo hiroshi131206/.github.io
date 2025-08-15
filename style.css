@@ -1040,6 +1040,8 @@ main {
     content: '';
     position: absolute;
     left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     width: 16px;
     height: 16px;
     background-image: url('https://gist.githubusercontent.com/hiroshi131206/2328d243652843d9c78f69cc8ff3f58c/raw/helm.svg');
@@ -1047,7 +1049,6 @@ main {
     background-repeat: no-repeat;
     background-position: center;
     animation: quietFloat 8s ease-in-out infinite;
-    filter: brightness(0) saturate(100%) invert(42%) sepia(12%) saturate(1156%) hue-rotate(174deg) brightness(94%) contrast(86%);
 }
 
 /* サウンドハウスリンク付き宅録環境 */
@@ -1190,11 +1191,10 @@ main {
 .soundhouse-link .link-arrow {
     position: relative;
     z-index: 1;
-    font-size: 0.9rem;
     transition: all 0.3s ease;
-    display: inline-block;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 12px;
     height: 12px;
 }
@@ -1210,12 +1210,11 @@ main {
     background-position: center;
     transform: rotate(0deg);
     transition: transform 0.3s ease;
-    filter: brightness(0) saturate(100%) invert(42%) sepia(95%) saturate(4469%) hue-rotate(16deg) brightness(101%) contrast(107%);
 }
 
 .soundhouse-link:hover .link-arrow::before {
     transform: rotate(45deg);
-    filter: brightness(0) saturate(100%) invert(42%) sepia(95%) saturate(4469%) hue-rotate(16deg) brightness(120%) contrast(107%);
+    filter: brightness(1.2) contrast(1.1);
 }
 
 /* 代替案1: コンパス風デザイン */

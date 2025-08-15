@@ -416,15 +416,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkArrow = link.querySelector('.link-arrow');
         if (linkArrow) {
             link.addEventListener('mouseenter', () => {
-                // 羅針盤の回転とグロー効果
+                // 羅針盤の回転エフェクト（CSSで制御）
                 linkArrow.style.transform = 'rotate(45deg)';
-                linkArrow.style.textShadow = '0 0 8px rgba(255, 102, 0, 0.8)';
             });
             
             link.addEventListener('mouseleave', () => {
                 // 元の状態に戻す
                 linkArrow.style.transform = 'rotate(0deg)';
-                linkArrow.style.textShadow = 'none';
             });
         }
     });
