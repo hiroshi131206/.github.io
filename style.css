@@ -833,6 +833,11 @@ main {
     box-shadow: var(--shadow-medium);
 }
 
+/* オーディオドラマ用の横幅2カラム分 */
+.sample-item-wide {
+    grid-column: 1 / -1;
+}
+
 .sample-item h3 {
     margin-bottom: 16px;
     color: var(--text-primary);
