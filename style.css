@@ -1037,12 +1037,17 @@ main {
 }
 
 .notes-list li:before {
-    content: "⚲";
+    content: '';
     position: absolute;
     left: 0;
-    color: var(--steel-gray);
-    font-size: 1rem;
+    width: 16px;
+    height: 16px;
+    background-image: url('https://gist.githubusercontent.com/hiroshi131206/2328d243652843d9c78f69cc8ff3f58c/raw/helm.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     animation: quietFloat 8s ease-in-out infinite;
+    filter: brightness(0) saturate(100%) invert(42%) sepia(12%) saturate(1156%) hue-rotate(174deg) brightness(94%) contrast(86%);
 }
 
 /* サウンドハウスリンク付き宅録環境 */
@@ -1190,19 +1195,27 @@ main {
     display: inline-block;
     font-family: Arial, sans-serif;
     font-weight: bold;
+    width: 12px;
+    height: 12px;
 }
 
 .soundhouse-link .link-arrow::before {
-    content: "🧭";
+    content: '';
     display: block;
-    font-size: 0.7rem;
+    width: 12px;
+    height: 12px;
+    background-image: url('https://gist.githubusercontent.com/hiroshi131206/31431b93fe9ffe3bac7af17409ad6d9e/raw/compass.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     transform: rotate(0deg);
     transition: transform 0.3s ease;
+    filter: brightness(0) saturate(100%) invert(42%) sepia(95%) saturate(4469%) hue-rotate(16deg) brightness(101%) contrast(107%);
 }
 
 .soundhouse-link:hover .link-arrow::before {
     transform: rotate(45deg);
-    text-shadow: 0 0 4px rgba(255, 102, 0, 0.6);
+    filter: brightness(0) saturate(100%) invert(42%) sepia(95%) saturate(4469%) hue-rotate(16deg) brightness(120%) contrast(107%);
 }
 
 /* 代替案1: コンパス風デザイン */
