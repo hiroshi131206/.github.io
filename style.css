@@ -1045,7 +1045,7 @@ main {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.5em;
+    top: 0.9em;
     width: 16px;
     height: 16px;
     background-image: url('https://gist.githubusercontent.com/hiroshi131206/2328d243652843d9c78f69cc8ff3f58c/raw/helm.svg');
