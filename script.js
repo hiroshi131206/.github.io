@@ -102,6 +102,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 改良版メディアプレイヤーの同時再生防止機能
 document.addEventListener('DOMContentLoaded', () => {
+    // ボイスサンプルの自動判別システム
+    const audioLinkChecker = {
+        init() {
+            const audioElements = document.querySelectorAll('.sample-item audio');
+            audioElements.forEach((audio, index) => {
+                this.checkAudioValidity(audio);
+            });
+        },
+        
+        checkAudioValidity(audio) {
+            const sampleItem = audio.closest('.sample-item');
+            const noteElement = sampleItem.querySelector('.sample-note');
+            
+            if (!noteElement) return;
+            
+            // 初期状態では注釈を非表示にしておく
+            noteElement.classList.add('hidden');
+            
+            // ロード成功時のイベント
+            const onLoadSuccess = () => {
+                noteElement.classList.add('hidden');
+                noteElement.classList.remove('show');
+            };
+            
+            // ロード失敗時のイベント
+            const onLoadError = () => {
+                noteElement.classList.remove('hidden');
+                noteElement.classList.add('show');
+            };
+            
+            // イベントリスナーを追加
+            audio.addEventListener('canplaythrough', onLoadSuccess);
+            audio.addEventListener('loadeddata', onLoadSuccess);
+            audio.addEventListener('error', onLoadError);
+            
+            // ソース要素のエラーもチェック
+            const sourceElement = audio.querySelector('source');
+            if (sourceElement) {
+                sourceElement.addEventListener('error', onLoadError);
+            }
+            
+            // タイムアウト処理（5秒経っても読み込めない場合はエラーとみなす）
+            let timeoutId = setTimeout(() => {
+                // 読み込みが完了していない場合
+                if (audio.readyState === 0 || audio.readyState === 1) {
+                    onLoadError();
+                }
+            }, 5000);
+            
+            // 読み込み完了時にタイムアウトをクリア
+            audio.addEventListener('canplaythrough', () => {
+                clearTimeout(timeoutId);
+            });
+            
+            audio.addEventListener('loadeddata', () => {
+                clearTimeout(timeoutId);
+            });
+            
+            // 手動での読み込み開始
+            try {
+                audio.load();
+            } catch (error) {
+                onLoadError();
+            }
+        }
+    };
+    
+    // ボイスサンプル判別システムを初期化
+    audioLinkChecker.init();
+        
     // メディア要素の管理
     const mediaManager = {
         currentlyPlaying: null,
