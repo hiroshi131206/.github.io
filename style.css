@@ -868,21 +868,6 @@ main {
     border: 1px solid var(--border-subtle);
     white-space: nowrap;
     font-style: italic;
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.3s ease;
-}
-
-.sample-note.hidden {
-    opacity: 0;
-    transform: translateX(-10px);
-    pointer-events: none;
-}
-
-.sample-note.show {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
 }
 
 /* モバイル対応 */
