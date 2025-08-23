@@ -814,11 +814,7 @@ main {
     background-size: 100% 2em;
     background-position: 0 2em;
     padding-top: 0.5em;
-    /* テキストブロックを中央配置 */
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
+    text-align: center;
 }
 
 /* 落ち着いたボイスサンプル */
