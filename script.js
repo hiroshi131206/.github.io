@@ -119,23 +119,38 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // 初期状態では注釈を非表示にしておく
             noteElement.classList.add('hidden');
+            noteElement.classList.remove('show');
+            
+            let hasLoaded = false;
+            let hasErrored = false;
             
             // ロード成功時のイベント
             const onLoadSuccess = () => {
-                noteElement.classList.add('hidden');
-                noteElement.classList.remove('show');
+                if (!hasErrored) {
+                    hasLoaded = true;
+                    noteElement.classList.add('hidden');
+                    noteElement.classList.remove('show');
+                }
             };
             
-            // ロード失敗時のイベント
+            // ロード失敗時のイベント  
             const onLoadError = () => {
-                noteElement.classList.remove('hidden');
-                noteElement.classList.add('show');
+                if (!hasLoaded) {
+                    hasErrored = true;
+                    noteElement.classList.remove('hidden');
+                    noteElement.classList.add('show');
+                }
             };
             
-            // イベントリスナーを追加
-            audio.addEventListener('canplaythrough', onLoadSuccess);
+            // 複数のイベントでロード成功を検知
             audio.addEventListener('loadeddata', onLoadSuccess);
+            audio.addEventListener('canplay', onLoadSuccess);
+            audio.addEventListener('canplaythrough', onLoadSuccess);
+            
+            // エラーイベント
             audio.addEventListener('error', onLoadError);
+            audio.addEventListener('stalled', onLoadError);
+            audio.addEventListener('abort', onLoadError);
             
             // ソース要素のエラーもチェック
             const sourceElement = audio.querySelector('source');
@@ -143,29 +158,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 sourceElement.addEventListener('error', onLoadError);
             }
             
-            // タイムアウト処理（5秒経っても読み込めない場合はエラーとみなす）
+            // より長いタイムアウト処理（10秒）
             let timeoutId = setTimeout(() => {
-                // 読み込みが完了していない場合
-                if (audio.readyState === 0 || audio.readyState === 1) {
+                // まだ読み込みが完了していない、かつエラーも発生していない場合
+                if (!hasLoaded && !hasErrored && audio.readyState < 2) {
                     onLoadError();
                 }
-            }, 5000);
+            }, 10000);
             
-            // 読み込み完了時にタイムアウトをクリア
-            audio.addEventListener('canplaythrough', () => {
+            // 成功時にタイムアウトをクリア
+            const clearTimeoutOnSuccess = () => {
                 clearTimeout(timeoutId);
-            });
+            };
             
-            audio.addEventListener('loadeddata', () => {
-                clearTimeout(timeoutId);
-            });
+            audio.addEventListener('loadeddata', clearTimeoutOnSuccess);
+            audio.addEventListener('canplay', clearTimeoutOnSuccess);
+            audio.addEventListener('canplaythrough', clearTimeoutOnSuccess);
             
-            // 手動での読み込み開始
-            try {
-                audio.load();
-            } catch (error) {
-                onLoadError();
-            }
+            // 手動での読み込み開始を少し遅延させる
+            setTimeout(() => {
+                try {
+                    // すでに読み込まれているかチェック
+                    if (audio.readyState >= 2) {
+                        onLoadSuccess();
+                        return;
+                    }
+                    
+                    // 読み込み開始
+                    audio.load();
+                    
+                    // 少し待ってから再度チェック
+                    setTimeout(() => {
+                        if (audio.readyState >= 2) {
+                            onLoadSuccess();
+                        }
+                    }, 1000);
+                    
+                } catch (error) {
+                    onLoadError();
+                }
+            }, 500);
         }
     };
     
