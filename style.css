@@ -696,6 +696,7 @@ main {
     grid-template-columns: 320px 1fr;
     gap: 60px;
     align-items: start;
+    margin-bottom: 40px;
 }
 
 .profile-image {
@@ -776,6 +777,9 @@ main {
     box-shadow: var(--shadow-soft);
     border: 1px solid var(--border-subtle);
     border-left: 4px solid var(--steel-gray);
+    /* 中央配置と幅調整 */
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .profile-description::before {
@@ -1223,10 +1227,6 @@ main {
 }
 
 /* 代替案3: 波のような前進デザイン */
-.soundhouse-link.wave-style .link-arrow {
-    position: relative;
-}
-
 .soundhouse-link.wave-style .link-arrow::before {
     content: "≈";
     font-size: 1rem;
@@ -1571,11 +1571,17 @@ main {
     .profile-content {
         grid-template-columns: 1fr;
         gap: 32px;
+        margin-bottom: 32px;
     }
     
     .profile-image {
         max-width: 300px;
         margin: 0 auto;
+    }
+    
+    .profile-description {
+        margin-top: 32px;
+        padding: 24px;
     }
     
     /* サンプル */
@@ -1684,7 +1690,7 @@ main {
     }
     
     .profile-description {
-        padding: 24px;
+        padding: 20px;
         font-size: 0.95rem;
     }
     
