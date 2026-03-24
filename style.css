@@ -709,6 +709,7 @@ main {
     border-radius: 12px;
     box-shadow: var(--shadow-deep);
     object-fit: cover;
+    object-position: top;
     aspect-ratio: 3/4;
     transition: all 0.4s ease;
     border: 2px solid var(--border-medium);
